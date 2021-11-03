@@ -31,10 +31,10 @@
 	},
 	"type": "module",
 	"engines": {
-		"node": ">= 14.17.3"
+		"node": ">= 16.13.0"
 	},
 	"browserslist": "> 0.5%, last 4 versions, not ie <= 11, not ie_mob <= 11",
 	"pudding": {
-		"subdirectory": ""
+		"subdirectory": "sesame"
 	}
 }

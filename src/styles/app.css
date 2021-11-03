@@ -1,6 +1,6 @@
 @import "variables.css";
 @import "normalize.css";
-@import "font.css";
+/* @import "font.css"; */
 @import "reset.css";
 
 /* colors defined in variables.css */
@@ -18,10 +18,10 @@
 
 	/* presets */
 	--border-radius: 4px;
-	--font-body: var(--sans);
-	--font-form: var(--sans);
-	--background-body: var(--color-white);
-  --background-form: var(--color-off-white);
+	--font-body: var(--mono);
+	--font-form: var(--mono);
+	--background-body: var(--color-off-white);
+  --background-form: var(--color-gray-dark);
 	--color-body: var(--color-off-black);
 	--color-placeholder: var(--color-gray-dark);
   --color-link: var(--color-purple);
@@ -30,5 +30,12 @@
 	--color-border: var(--color-gray-light);
 	--color-selection: var(--color-gray-light);
   --color-highlight: var(--color-yellow);
-	
+}
+
+body {
+	font-size: 20px;
+}
+
+main {
+	position: relative;
 }
