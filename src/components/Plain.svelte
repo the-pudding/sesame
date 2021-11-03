@@ -5,9 +5,10 @@
 </script>
 
 <article class:visible>
-  {#each copy.scenes as { scene, beats }}
+  {#each copy.scenes as { scene, setting, beats }}
     <section id={scene}>
-      <h2>{scene}</h2>
+      <h2>scene: {scene}</h2>
+      <p>setting: <em>{setting}</em></p>
       {#each beats as { text, note, deep }}
         <div class="beat">
           <p>{text}</p>
@@ -27,7 +28,7 @@
 <style>
   article {
     display: none;
-    max-width: 30em;
+    max-width: 25em;
     margin: 0 auto;
     padding: 1em;
   }

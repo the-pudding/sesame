@@ -16,7 +16,8 @@
 <Plain visible={plain} />
 
 <Stage visible={!plain}>
-  <div class="test" />
+  <p>We are pixel people at 320px</p>
+  <img class="c" src="assets/c.png" />
 </Stage>
 
 <div class="toggle">
@@ -24,14 +25,20 @@
 </div>
 
 <style>
-  .test {
-    background: red;
+  p {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    /* transform: translate(0, -100%); */
+  }
+
+  img {
     position: absolute;
     top: 100%;
     left: 0;
     transform: translate(0, -100%);
-    width: 64px;
-    height: 64px;
+    width: 320px;
+    height: 320px;
   }
 
   .toggle {

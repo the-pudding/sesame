@@ -36,13 +36,13 @@
   .toggle--inner [role="switch"][aria-checked="true"] :first-child,
   [role="switch"][aria-checked="false"] :last-child {
     display: inline-block;
-    border-radius: 4px;
+    border-radius: var(--radius);
     background: var(--color-off-black);
     color: var(--color-off-white);
   }
 
   .toggle--inner button {
-    padding: 0.5em;
+    padding: 0.25em;
     background-color: var(--color-white);
     border: 2px solid var(--color-off-black);
   }
@@ -52,7 +52,7 @@
     pointer-events: none;
     display: inline-block;
     line-height: 1;
-    padding: 0.25em;
+    padding: 0.25em 0.5em;
   }
 
   .toggle--inner button:focus {
@@ -82,7 +82,7 @@
     width: 1.5em;
     height: 1.5em;
     background: var(--color-white);
-    border-radius: 4px;
+    border-radius: var(--radius);
     top: 0.25em;
     right: 1.75em;
   }

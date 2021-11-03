@@ -1,6 +1,6 @@
 @import "variables.css";
 @import "normalize.css";
-/* @import "font.css"; */
+@import "font.css";
 @import "reset.css";
 
 /* colors defined in variables.css */
@@ -8,7 +8,7 @@
 	/* font */
 	--sans: "National 2 Web", Helvetica, Arial, sans-serif;
 	--serif: "Tiempos Text Web", Georgia, Times, serif;
-	--mono: Menlo, Consolas, Monaco, "Courier New", monospace;
+	--mono: "SHPinscher", Menlo, Consolas, Monaco, "Courier New", monospace;
 	
 	/* z-index */
 	--z-bottom: -100;
@@ -17,10 +17,10 @@
 	--z-overlay: 1000;
 
 	/* presets */
-	--border-radius: 4px;
+	--border-radius: 0px;
 	--font-body: var(--mono);
 	--font-form: var(--mono);
-	--background-body: var(--color-off-white);
+	--background-body: var(--color-white);
   --background-form: var(--color-gray-dark);
 	--color-body: var(--color-off-black);
 	--color-placeholder: var(--color-gray-dark);
@@ -33,9 +33,17 @@
 }
 
 body {
-	font-size: 20px;
+	font-size: 24px;
+	line-height: 1.2;
 }
 
 main {
 	position: relative;
 }
+
+@media only screen and (min-width: 640px) {
+	body {
+		font-size: 28px;
+	}
+}
+
