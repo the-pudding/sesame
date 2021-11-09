@@ -35,7 +35,18 @@
   <meta name="robots" content="max-image-preview:large" />
 
   <link rel="canonical" href="{url}/" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="preload"
+    href="https://pudding.cool/assets/fonts/atkinson/atkinson-hyperlegible-v1-latin-400.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="https://pudding.cool/assets/fonts/atkinson/atkinson-hyperlegible-v1-latin-700.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
 </svelte:head>

@@ -5,10 +5,9 @@
 
 /* colors defined in variables.css */
 :root {
-	/* font */
-	--sans: "National 2 Web", Helvetica, Arial, sans-serif;
+	--sans: "Atkinson Hyperlegible", Helvetica, Arial, sans-serif;
 	--serif: "Tiempos Text Web", Georgia, Times, serif;
-	--mono: "SHPinscher", Menlo, Consolas, Monaco, "Courier New", monospace;
+	--mono: "CozetteVector", Menlo, Consolas, Monaco, "Courier New", monospace;
 	
 	/* z-index */
 	--z-bottom: -100;
@@ -18,32 +17,25 @@
 
 	/* presets */
 	--border-radius: 0px;
-	--font-body: var(--mono);
-	--font-form: var(--mono);
-	--background-body: var(--color-white);
-  --background-form: var(--color-gray-dark);
-	--color-body: var(--color-off-black);
+	--font-body: var(--sans);
+	--font-form: var(--sans);
+	--color-bg: var(--color-white);
+	--color-fg: var(--color-off-black);
 	--color-placeholder: var(--color-gray-dark);
   --color-link: var(--color-purple);
   --color-focus: var(--color-red);
-	--color-form: var(--color-off-black);
+  --color-form-bg: var(--color-gray-dark);
+	--color-form-fg: var(--color-off-black);
 	--color-border: var(--color-gray-light);
 	--color-selection: var(--color-gray-light);
   --color-highlight: var(--color-yellow);
 }
 
 body {
-	font-size: 24px;
-	line-height: 1.2;
+	line-height: 1.4;
 }
 
 main {
 	position: relative;
+	font-size: clamp(18px, 2vw, 32px);
 }
-
-@media only screen and (min-width: 640px) {
-	body {
-		font-size: 28px;
-	}
-}
-

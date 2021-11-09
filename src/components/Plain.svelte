@@ -8,11 +8,11 @@
   {#each copy.scenes as { scene, setting, beats }}
     <section id={scene}>
       <h2>scene: {scene}</h2>
-      <p>setting: <em>{setting}</em></p>
+      <small>setting: {setting}</small>
       {#each beats as { text, note, deep }}
         <div class="beat">
-          <p>{text}</p>
-          {#if note} <small>notes: <em>{note}</em></small> {/if}
+          <p>{@html text}</p>
+          {#if note} <small>notes: {note}</small> {/if}
           {#if deep}
             <details>
               <summary>deep dive</summary>
@@ -47,5 +47,9 @@
 
   .beat {
     margin-bottom: 2em;
+  }
+
+  small {
+    color: var(--color-gray-medium);
   }
 </style>

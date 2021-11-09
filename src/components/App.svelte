@@ -2,7 +2,7 @@
   import { setContext } from "svelte";
   import Toggle from "$components/helpers/Toggle.svelte";
   import Plain from "$components/Plain.svelte";
-  import Stage from "$components/Stage.svelte";
+  import Game from "$components/Game.svelte";
   import Russell from "$components/Russell.svelte";
   import copy from "$data/doc.json";
 
@@ -15,10 +15,9 @@
 
 <Plain visible={plain} />
 
-<Stage visible={!plain}>
-  <p>We are pixel people at 320px</p>
-  <img class="c" src="assets/c.png" />
-</Stage>
+<Game visible={!plain}>
+  <img class="c" src="assets/c.png" alt="character" />
+</Game>
 
 <div class="toggle">
   <Toggle label="Text Version" bind:value={toggle} />
@@ -37,8 +36,8 @@
     top: 100%;
     left: 0;
     transform: translate(0, -100%);
-    width: 320px;
-    height: 320px;
+    width: 196px;
+    height: 196px;
   }
 
   .toggle {

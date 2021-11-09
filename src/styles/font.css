@@ -1,8 +1,35 @@
 @font-face {
-	font-family: 'SHPinscher';
-	src: url('assets/fonts/shpinscher.woff2') format('woff2');
+  font-family: 'Atkinson Hyperlegible';
+  src: url('https://pudding.cool/assets/fonts/atkinson/atkinson-hyperlegible-v1-latin-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+	font-display: swap;
+	font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('https://pudding.cool/assets/fonts/atkinson/atkinson-hyperlegible-v1-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+	font-display: swap;
+	font-stretch: normal;
+}
+
+@font-face {
+	font-family: "CozetteVector";
+	src: url("assets/fonts/CozetteVector.woff2") format("woff2");
 	font-weight: 400;
 	font-style: normal;
-	font-stretch: normal;
 	font-display: swap;
+	font-stretch: normal;
+}
+
+@font-face {
+	font-family: "FairfaxSM";
+	src: url("assets/fonts/FairfaxSM.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	font-stretch: normal;
 }
