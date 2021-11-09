@@ -10,14 +10,14 @@
 
 <style>
   .wordmark {
-    max-width: 10em;
-    margin: 0 auto;
-    padding: 1em 0;
+    max-width: 12rem;
+    margin: 0;
+    padding: 1rem;
   }
 
   .wordmark a {
     border: none;
-    color: var(--color-fg);
+    color: var(--color-body);
   }
 
   .wordmark a:hover {
@@ -26,5 +26,14 @@
 
   :global(.wordmark svg path) {
     fill: currentColor;
+  }
+
+  @media only screen and (min-width: 960px) {
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
   }
 </style>

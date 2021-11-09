@@ -31,6 +31,7 @@
   .label {
     font-family: inherit;
     font-size: 1em;
+    margin-right: 0.5em;
   }
 
   .toggle--inner [role="switch"][aria-checked="true"] :first-child,

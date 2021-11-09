@@ -8,11 +8,10 @@
   {#each copy.scenes as { scene, setting, beats }}
     <section id={scene}>
       <h2>scene: {scene}</h2>
-      <small>setting: {setting}</small>
-      {#each beats as { text, note, deep }}
+      {#each beats as { text, cue, deep }}
         <div class="beat">
           <p>{@html text}</p>
-          {#if note} <small>notes: {note}</small> {/if}
+          {#if cue} <small>cue: {cue}</small> {/if}
           {#if deep}
             <details>
               <summary>deep dive</summary>

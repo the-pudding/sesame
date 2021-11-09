@@ -24,13 +24,6 @@
 </div>
 
 <style>
-  p {
-    position: absolute;
-    top: 50%;
-    left: 0%;
-    /* transform: translate(0, -100%); */
-  }
-
   img {
     position: absolute;
     top: 100%;
@@ -42,7 +35,8 @@
 
   .toggle {
     position: fixed;
-    top: 1em;
-    right: 1em;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 1rem;
   }
 </style>
