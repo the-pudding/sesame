@@ -1,0 +1,42 @@
+<script>
+  import { onMount, getContext } from "svelte";
+  import { tweened } from "svelte/motion";
+  export let name;
+  export let size;
+
+  const { scale } = getContext("Game");
+  // 1 / (n - 1)
+  let frames = 8;
+  let frame = 0;
+
+  const tweenX = tweened(0, { duration: 5000 });
+
+  onMount(() => {
+    setInterval(() => {
+      frame += 1;
+      if (frame >= frames) frame = 0;
+    }, 125);
+    tweenX.set(500);
+  });
+
+  $: pos = `${(frame / (frames - 1)) * 100}% 0`;
+  $: x = `${$tweenX}px`;
+</script>
+
+<div style="--size: {size * $scale}px; --src: url(assets/{name}.png); --x: {x}; --pos: {pos};" />
+
+<style>
+  div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(var(--x), 0);
+    background: var(--src);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: var(--pos);
+    width: var(--size);
+    height: var(--size);
+    outline: 1px solid red;
+  }
+</style>
