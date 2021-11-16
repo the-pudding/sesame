@@ -4,7 +4,8 @@
   export let name;
   export let size;
 
-  const { scale } = getContext("Game");
+  const { scale, beat } = getContext("Game");
+
   // 1 / (n - 1)
   let frames = 8;
   let frame = 0;
@@ -25,6 +26,7 @@
 
 <div style="--size: {size * $scale}px; --src: url(assets/{name}.png); --x: {x}; --pos: {pos};" />
 
+<!-- <div style="--size: {size * $scale}px; --src: url(assets/{name}.png);" /> -->
 <style>
   div {
     position: absolute;
