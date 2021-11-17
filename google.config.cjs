@@ -5,6 +5,7 @@ module.exports = [
 	},
 	{
 		"id": "1V2ipXlcwTawjW-GQTjH4CIHDVoPzG02cSXzzH2Bl-uU",
-		"filepath": "src/data/cues.json"
+		"filepath": "src/data/cues.csv",
+		"gid": "0"
 	}
 ]

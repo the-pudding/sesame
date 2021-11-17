@@ -23,7 +23,7 @@
 <style>
   .toggle {
     position: fixed;
-    top: 4rem;
+    bottom: 1rem;
     left: 1rem;
     font-size: 1rem;
     max-width: 6rem;

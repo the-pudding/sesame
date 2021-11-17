@@ -2,15 +2,11 @@
   import { getContext } from "svelte";
   import { fade } from "svelte/transition";
 
-  export let index;
-  export let beats;
-
-  $: beat = beats[index];
-  $: text = beat.text;
-  $: deep = beat.deep;
+  export let text;
+  export let deep;
 </script>
 
-{#key index}
+{#key text}
   <div transition:fade>
     <p>{@html text}</p>
   </div>

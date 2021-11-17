@@ -1,10 +1,13 @@
 <script>
   import { setContext, getContext } from "svelte";
   import { writable } from "svelte/store";
+  import { groups } from "d3";
   import viewport from "$stores/viewport.js";
   import Sprite from "$components/Sprite.svelte";
   import Beat from "$components/Beat.svelte";
   import Tap from "$components/helpers/Tap.svelte";
+  import cueData from "$data/cues.js";
+  import spriteData from "$data/sprites.json";
 
   const { copy } = getContext("App");
 
@@ -12,7 +15,8 @@
 
   const UNITS = 10;
   const BASE = 32;
-  const SIZE = BASE * UNITS; // 320
+  const SIZE = BASE * UNITS;
+  const MAX_SCALE = 5;
 
   let beatIndex = 0;
   let scale = writable();
@@ -25,21 +29,32 @@
     beatIndex = Math.min(Math.max(0, temp), beats.length - 1);
   };
 
-  $: scale.set(($viewport.width * 0.9) / SIZE); // 960 = 3.0
+  const getSpriteData = (name) => {
+    // TODO filter and return sprite data for this name
+    return spriteData;
+  };
+
+  $: scale.set(Math.min(MAX_SCALE, ($viewport.width * 0.9) / SIZE));
 
   $: setContext("Game", { scale });
+
+  $: id = beats[beatIndex].id;
+  $: text = beats[beatIndex].text;
+  $: deep = beats[beatIndex].deep;
+  $: cues = cueData.filter((d) => d.id === id);
+  $: sprites = groups(cues, (d) => d.sprite);
 </script>
 
 <div id="game" class:visible>
   <p>{10} x {5} (scale: {$scale})</p>
 
   <div class="stage" style="--scale: {$scale};">
-    <Sprite name="burger" size={32} />
-    <Sprite name="russell" size={64} />
-    <!-- <Sprite name="hospital" size={128} /> -->
+    {#each sprites as [name, steps]}
+      <Sprite {id} {name} {steps} data={getSpriteData(name)} />
+    {/each}
   </div>
 
-  <Beat {beats} index={beatIndex} />
+  <Beat {text} {deep} />
 
   <Tap debug={false} full={true} enableKeyboard={true} size="50%" on:tap={onTap} />
 </div>
@@ -71,5 +86,29 @@
     transform: translate(-50%, 0);
     outline: 1px solid green;
     pointer-events: none;
+  }
+
+  .stage:before {
+    content: "";
+    background-image: linear-gradient(right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
+    display: block;
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+  }
+
+  .stage:after {
+    content: "";
+    background-image: linear-gradient(left, rgba(0, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
+    display: block;
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(100%);
   }
 </style>
