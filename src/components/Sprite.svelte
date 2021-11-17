@@ -7,30 +7,34 @@
   export let data;
   export let id;
 
+  const PATH = "assets/sprites";
+
   const { scale, beat } = getContext("Game");
+
+  const size = name === "russell" ? 64 : 128;
 
   // 1 / (n - 1)
   let frames = 8;
   let frame = 0;
 
-  const tweenX = tweened(0, { duration: 5000 });
+  let tween = tweened(0);
 
-  const animate = async ({
-    animation,
-    duration,
-    delay,
-    startX,
-    endX,
-    startY,
-    endY,
-    startR,
-    endR,
-    z,
-    flip
-  }) => {
+  const makeObj = (step, prefix) => {
+    return Object.keys(step)
+      .filter((d) => d.includes(prefix))
+      .reduce((prev, cur) => {
+        prev[cur.replace(prefix, "")] = step[cur] || 0;
+        return prev;
+      }, {});
+  };
+
+  const animate = async (step) => {
     // make our tween
-    const t = tweened(startX, { duration, delay });
-    await t.set(endX);
+    const start = makeObj(step, "start_");
+    const end = makeObj(step, "end_");
+    const { duration, delay } = step;
+    tween = tweened(start, { duration, delay });
+    await tween.set(end);
     return;
   };
 
@@ -55,7 +59,9 @@
 
 <!-- <div style="--size: {size * $scale}px; --src: url(assets/{name}.png); --x: {x}; --pos: {pos};" /> -->
 
-<!-- <div style="--size: {size * $scale}px; --src: url(assets/{name}.png);" /> -->
+<div style="--size: {size * $scale}px; --src: url({PATH}/{name}.png);" />
+<p>{$tween.x}</p>
+
 <style>
   div {
     position: absolute;
