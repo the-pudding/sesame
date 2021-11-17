@@ -30,17 +30,19 @@
   $: setContext("Game", { scale });
 </script>
 
-<p>{10} x {5} (scale: {$scale})</p>
+<div id="game" class:visible>
+  <p>{10} x {5} (scale: {$scale})</p>
 
-<div class="stage" class:visible style="--scale: {$scale};">
-  <Sprite name="burger" size={32} />
-  <Sprite name="russell" size={64} />
-  <!-- <Sprite name="hospital" size={128} /> -->
+  <div class="stage" style="--scale: {$scale};">
+    <Sprite name="burger" size={32} />
+    <Sprite name="russell" size={64} />
+    <!-- <Sprite name="hospital" size={128} /> -->
+  </div>
+
+  <Beat {beats} index={beatIndex} />
+
+  <Tap debug={false} full={true} enableKeyboard={true} size="50%" on:tap={onTap} />
 </div>
-
-<Beat {beats} index={beatIndex} />
-
-<Tap debug={false} full={true} enableKeyboard={true} size="50%" on:tap={onTap} />
 
 <style>
   p {
@@ -48,11 +50,18 @@
     padding: 0 1em;
   }
 
+  #game {
+    display: none;
+  }
+
+  #game.visible {
+    display: block;
+  }
+
   .stage {
     --base: 32px;
     --unitsX: 10;
     --unitsY: 5;
-    display: none;
     width: calc(var(--unitsX) * var(--scale) * var(--base));
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
@@ -62,9 +71,5 @@
     transform: translate(-50%, 0);
     outline: 1px solid green;
     pointer-events: none;
-  }
-
-  .visible {
-    display: block;
   }
 </style>

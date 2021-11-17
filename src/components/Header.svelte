@@ -13,6 +13,8 @@
     max-width: 12rem;
     margin: 0;
     padding: 1rem;
+    /* transform-origin: 0 50%; */
+    /* transform: rotate(-90deg) translate(-100%, 2em); */
   }
 
   .wordmark a {
