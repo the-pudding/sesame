@@ -1,4 +1,4 @@
 id,sprite,appear,enter,exit,animation,duration,delay,start_x,end_x,start_y,end_y,start_r,end_r,z,flip
-byline,russell,enter,,,walk,3000,,-2,3,0,,,,,
-byline,russell,,,,idle,1000,,3,,0,,,,,
-byline,russell,,,,walk,3000,,3,7,0,,,,,
+byline,russell,enter,,,walk,3000,,-2,3,,,,,,
+byline,russell,,,,idle,1000,,3,3,,,,,,
+byline,russell,,,,walk,3000,,3,7,,,,,,

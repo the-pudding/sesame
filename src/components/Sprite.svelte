@@ -7,17 +7,16 @@
   export let data;
   export let id;
 
-  const PATH = "assets/sprites";
+  const { scale, BASE } = getContext("Game");
 
-  const { scale, beat } = getContext("Game");
+  const SIZE = data[0].size;
 
-  const size = name === "russell" ? 64 : 128;
-
-  // 1 / (n - 1)
-  let frames = 8;
-  let frame = 0;
-
+  // const size = name === "russell" ? 64 : 128;
+  const src = `--src: url(assets/sprites/${name}.png);`;
   let tween = tweened(0);
+  let cycleInterval;
+  let frameIndex = 0;
+  let frameCount = 0;
 
   const makeObj = (step, prefix) => {
     return Object.keys(step)
@@ -28,13 +27,28 @@
       }, {});
   };
 
+  const cycle = (frames) => {
+    let i = 0;
+    frameIndex = 0;
+    frameCount = frames.length;
+    if (frames.length === 1) return;
+    cycleInterval = setInterval(() => {
+      i += 1;
+      if (i >= frames.length) i = 0;
+      frameIndex = frames[i].index;
+    }, 125);
+  };
+
   const animate = async (step) => {
+    const frames = data.filter((d) => d.name === step.animation);
+    cycle(frames);
     // make our tween
     const start = makeObj(step, "start_");
     const end = makeObj(step, "end_");
     const { duration, delay } = step;
     tween = tweened(start, { duration, delay });
     await tween.set(end);
+    clearInterval(cycleInterval);
     return;
   };
 
@@ -44,30 +58,32 @@
       await animate(step);
     }
   };
-  // onMount(() => {
-  //   setInterval(() => {
-  //     frame += 1;
-  //     if (frame >= frames) frame = 0;
-  //   }, 125);
-  //   tweenX.set(500);
-  // });
 
   $: id, run();
+  4 / 8;
   // $: pos = `${(frame / (frames - 1)) * 100}% 0`;
   // $: x = `${$tweenX}px`;
+
+  $: frame = data.find((d) => d.index === frameIndex);
+  $: pos = `--pos: ${$scale * frame.x * -1}px ${$scale * frame.y * -1};`;
+  $: console.log(pos);
+  $: size = `--size: ${SIZE * $scale}px;`;
+  $: x = `${Math.round($tween.x * $scale * BASE)}px`;
+  $: y = `${Math.round($tween.y * $scale * BASE)}px`;
+  $: r = `${$tween.r * $scale}deg`;
+  $: s = false ? -1 : 1;
+  $: transform = `--transform: translate(${x}, ${y}) rotate(${r}) scaleX(${s});`;
+  $: style = `${src} ${size} ${pos} ${transform}`;
 </script>
 
-<!-- <div style="--size: {size * $scale}px; --src: url(assets/{name}.png); --x: {x}; --pos: {pos};" /> -->
-
-<div style="--size: {size * $scale}px; --src: url({PATH}/{name}.png);" />
-<p>{$tween.x}</p>
+<div {style} />
 
 <style>
   div {
     position: absolute;
     bottom: 0;
     left: 0;
-    transform: translate(var(--x), 0);
+    transform: var(--transform);
     background: var(--src);
     background-repeat: no-repeat;
     background-size: cover;

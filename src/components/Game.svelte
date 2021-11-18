@@ -29,14 +29,11 @@
     beatIndex = Math.min(Math.max(0, temp), beats.length - 1);
   };
 
-  const getSpriteData = (name) => {
-    // TODO filter and return sprite data for this name
-    return spriteData;
-  };
+  const getSpriteData = (name) => spriteData.filter((d) => d.id === name);
 
   $: scale.set(Math.min(MAX_SCALE, ($viewport.width * 0.9) / SIZE));
 
-  $: setContext("Game", { scale });
+  $: setContext("Game", { scale, BASE });
 
   $: id = beats[beatIndex].id;
   $: text = beats[beatIndex].text;
