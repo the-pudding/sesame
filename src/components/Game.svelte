@@ -29,7 +29,7 @@
     beatIndex = Math.min(Math.max(0, temp), beats.length - 1);
   };
 
-  const getSpriteData = (name) => spriteData.filter((d) => d.id === name);
+  const getSpriteData = (name) => spriteData.find((d) => d.id === name);
 
   $: scale.set(Math.min(MAX_SCALE, ($viewport.width * 0.9) / SIZE));
 

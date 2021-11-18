@@ -9,10 +9,9 @@
 
   const { scale, BASE } = getContext("Game");
 
-  const SIZE = data[0].size;
-
-  // const size = name === "russell" ? 64 : 128;
+  // const FACTOR = 10;
   const src = `--src: url(assets/sprites/${name}.png);`;
+
   let tween = tweened(0);
   let cycleInterval;
   let frameIndex = 0;
@@ -40,7 +39,7 @@
   };
 
   const animate = async (step) => {
-    const frames = data.filter((d) => d.name === step.animation);
+    const frames = data.frames.filter((d) => d.name === step.animation);
     cycle(frames);
     // make our tween
     const start = makeObj(step, "start_");
@@ -60,19 +59,18 @@
   };
 
   $: id, run();
-  4 / 8;
-  // $: pos = `${(frame / (frames - 1)) * 100}% 0`;
-  // $: x = `${$tweenX}px`;
+  $: frame = data.frames.find((d) => d.index === frameIndex);
 
-  $: frame = data.find((d) => d.index === frameIndex);
   $: pos = `--pos: ${$scale * frame.x * -1}px ${$scale * frame.y * -1};`;
-  $: console.log(pos);
-  $: size = `--size: ${SIZE * $scale}px;`;
+  $: size = `--size: ${data.size * $scale}px;`;
+
+  $: console.log(data);
   $: x = `${Math.round($tween.x * $scale * BASE)}px`;
   $: y = `${Math.round($tween.y * $scale * BASE)}px`;
   $: r = `${$tween.r * $scale}deg`;
   $: s = false ? -1 : 1;
   $: transform = `--transform: translate(${x}, ${y}) rotate(${r}) scaleX(${s});`;
+
   $: style = `${src} ${size} ${pos} ${transform}`;
 </script>
 
