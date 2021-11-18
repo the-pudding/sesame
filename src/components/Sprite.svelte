@@ -9,13 +9,13 @@
 
   const { scale, BASE } = getContext("Game");
 
-  // const FACTOR = 10;
   const src = `--src: url(assets/sprites/${name}.png);`;
 
   let tween = tweened(0);
   let cycleInterval;
   let frameIndex = 0;
   let frameCount = 0;
+  let flip;
 
   const makeObj = (step, prefix) => {
     return Object.keys(step)
@@ -39,9 +39,11 @@
   };
 
   const animate = async (step) => {
+    flip = step.flip;
+
     const frames = data.frames.filter((d) => d.name === step.animation);
     cycle(frames);
-    // make our tween
+
     const start = makeObj(step, "start_");
     const end = makeObj(step, "end_");
     const { duration, delay } = step;
@@ -53,7 +55,6 @@
 
   const run = async () => {
     for (let step of steps) {
-      console.log(step.animation);
       await animate(step);
     }
   };
@@ -64,11 +65,10 @@
   $: pos = `--pos: ${$scale * frame.x * -1}px ${$scale * frame.y * -1};`;
   $: size = `--size: ${data.size * $scale}px;`;
 
-  $: console.log(data);
   $: x = `${Math.round($tween.x * $scale * BASE)}px`;
   $: y = `${Math.round($tween.y * $scale * BASE)}px`;
   $: r = `${$tween.r * $scale}deg`;
-  $: s = false ? -1 : 1;
+  $: s = flip ? -1 : 1;
   $: transform = `--transform: translate(${x}, ${y}) rotate(${r}) scaleX(${s});`;
 
   $: style = `${src} ${size} ${pos} ${transform}`;

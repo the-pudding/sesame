@@ -2,7 +2,7 @@ import cueData from "$data/cues.csv";
 
 const clean = cueData.map(d => ({
 	...d,
-	duration: +d.duration,
+	duration: d.duration === "" ? undefined : +d.duration,
 	delay: +d.delay,
 	start_x: +d.start_x,
 	end_x: +d.end_x,
@@ -10,6 +10,7 @@ const clean = cueData.map(d => ({
 	end_y: +d.end_y,
 	start_r: +d.start_r,
 	end_y: +d.end_y,
+	flip: !!d.flip,
 	z: +d.z,
 }));
 

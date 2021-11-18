@@ -46,7 +46,7 @@
   <p>{10} x {5} (scale: {$scale})</p>
 
   <div class="stage" style="--scale: {$scale};">
-    {#each sprites as [name, steps]}
+    {#each sprites as [name, steps] (name)}
       <Sprite {id} {name} {steps} data={getSpriteData(name)} />
     {/each}
   </div>
@@ -95,6 +95,7 @@
     left: 0;
     top: 0;
     transform: translateX(-100%);
+    z-index: var(--z-top);
   }
 
   .stage:after {
@@ -107,5 +108,6 @@
     right: 0;
     top: 0;
     transform: translateX(100%);
+    z-index: var(--z-top);
   }
 </style>
