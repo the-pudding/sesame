@@ -11,6 +11,7 @@ const clean = cueData.map(d => ({
 	start_r: +d.start_r,
 	end_y: +d.end_y,
 	flip: !!d.flip,
+	loop: !!d.loop,
 	z: +d.z,
 }));
 

@@ -1,5 +1,7 @@
-id,sprite,appear,enter,exit,animation,duration,delay,start_x,end_x,start_y,end_y,start_r,end_r,z,flip
-byline,russell,enter,,,walk,4000,,-1,3,,,,,,
-byline,russell,,,,idle,1000,,3,3,,,,,,
-byline,russell,,,,walk,2000,,3,1,,,,,,TRUE
-byline,russell,,,,idle,0,,1,1,,,,,,TRUE
+id,sprite,appear,enter,exit,animation,loop,duration,delay,start_x,end_x,start_y,end_y,start_r,end_r,z,flip
+byline,russell,enter,,,walk,,4000,,-1,3,,,,,,
+byline,russell,,,,idle,,1000,,3,3,,,,,,
+byline,russell,,,,walk,,2000,,3,1,,,,,,
+byline,russell,,,,,,,,1,1,,,,,,
+eat,russell,,,,,,,,1,1,,,,,,
+eat,burger,,,,,TRUE,5000,,11,-1,3,3,,,,

@@ -14,7 +14,6 @@
   let tween = tweened(0);
   let cycleInterval;
   let frameIndex = 0;
-  let frameCount = 0;
   let flip;
 
   const makeObj = (step, prefix) => {
@@ -29,7 +28,6 @@
   const cycle = (frames) => {
     let i = 0;
     frameIndex = 0;
-    frameCount = frames.length;
     if (frames.length === 1) return;
     cycleInterval = setInterval(() => {
       i += 1;
@@ -53,9 +51,18 @@
     return;
   };
 
+  const idle = (step) => {
+    frameIndex = 0;
+    const start = makeObj(step, "start_");
+    tween.set(start, { duration: 0 });
+  };
+
   const run = async () => {
     for (let step of steps) {
-      await animate(step);
+      console.log(step);
+      if (step.animation) await animate(step);
+      // else if (step.loop) idle();
+      else idle(step);
     }
   };
 
