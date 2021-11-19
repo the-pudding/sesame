@@ -1,7 +1,7 @@
 [
 	{
 		"id": "burger",
-		"size": 64,
+		"size": 32,
 		"frames": [
 			{
 				"index": 0,

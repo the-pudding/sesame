@@ -1,11 +1,11 @@
 { "frames": [
    {
     "filename": "burger.aseprite",
-    "frame": { "x": 0, "y": 0, "w": 640, "h": 640 },
+    "frame": { "x": 0, "y": 0, "w": 320, "h": 320 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 640, "h": 640 },
-    "sourceSize": { "w": 640, "h": 640 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 320, "h": 320 },
+    "sourceSize": { "w": 320, "h": 320 },
     "duration": 100
    }
  ],
@@ -14,7 +14,7 @@
   "version": "1.3-beta7",
   "image": "burger.png",
   "format": "RGBA8888",
-  "size": { "w": 640, "h": 640 },
+  "size": { "w": 320, "h": 320 },
   "scale": "1",
   "frameTags": [
   ]

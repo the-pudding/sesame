@@ -1,6 +1,7 @@
 <script>
   import { onMount, getContext } from "svelte";
   import { tweened } from "svelte/motion";
+  import runWithCancel from "$utils/runWithCancel.js";
 
   export let name;
   export let steps;
@@ -8,6 +9,7 @@
   export let id;
 
   const { scale, BASE } = getContext("Game");
+  const FRAMERATE = 100;
 
   const src = `--src: url(assets/sprites/${name}.png);`;
 
@@ -15,6 +17,12 @@
   let cycleInterval;
   let frameIndex = 0;
   let flip;
+
+  const pause = (delay) => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, delay);
+    });
+  };
 
   const makeObj = (step, prefix) => {
     return Object.keys(step)
@@ -25,58 +33,76 @@
       }, {});
   };
 
-  const cycle = (frames) => {
-    let i = 0;
-    frameIndex = 0;
-    if (frames.length === 1) return;
-    cycleInterval = setInterval(() => {
-      i += 1;
-      if (i >= frames.length) i = 0;
-      frameIndex = frames[i].index;
-    }, 125);
-  };
-
-  const animate = async (step) => {
-    flip = step.flip;
-
-    const frames = data.frames.filter((d) => d.name === step.animation);
-    cycle(frames);
-
+  const move = async (step) => {
     const start = makeObj(step, "start_");
     const end = makeObj(step, "end_");
-    const { duration, delay } = step;
-    tween = tweened(start, { duration, delay });
+    const { duration } = step;
+    tween = tweened(start, { duration });
     await tween.set(end);
-    clearInterval(cycleInterval);
     return;
   };
 
-  const idle = (step) => {
-    frameIndex = 0;
+  const jump = (step) => {
     const start = makeObj(step, "start_");
     tween.set(start, { duration: 0 });
   };
 
-  const run = async () => {
-    for (let step of steps) {
-      console.log(step);
-      if (step.animation) await animate(step);
-      // else if (step.loop) idle();
-      else idle(step);
-    }
+  const cycle = (step) => {
+    const frames = data.frames.filter((d) => d.name === step.cycle);
+
+    frameIndex = 0;
+
+    jump(step);
+
+    if (!frames.length) return;
+
+    let i = 0;
+    cycleInterval = setInterval(() => {
+      i += 1;
+      if (i >= frames.length) i = 0;
+      frameIndex = frames[i].index;
+    }, FRAMERATE);
   };
 
-  $: id, run();
+  function* run() {
+    for (let step of steps) {
+      if (step.delay) yield pause(step.delay);
+
+      if (cycleInterval) clearInterval(cycleInterval);
+
+      flip = step.flip;
+
+      cycle(step);
+
+      // do a one time transform tween
+      if (step.duration) yield move(step);
+
+      // repeat step
+      // TODO optimize?
+      if (step.loop) steps.push({ ...step });
+    }
+    // TODO auto finish back on idle?
+  }
+
+  const start = () => {
+    if (cancelFn) cancelFn();
+
+    const { promise, cancel } = runWithCancel(run);
+    promise.then(() => {}).catch(() => {});
+    return cancel;
+  };
+
+  $: cancelFn = start(id);
   $: frame = data.frames.find((d) => d.index === frameIndex);
 
-  $: pos = `--pos: ${$scale * frame.x * -1}px ${$scale * frame.y * -1};`;
-  $: size = `--size: ${data.size * $scale}px;`;
-
   $: x = `${Math.round($tween.x * $scale * BASE)}px`;
-  $: y = `${Math.round($tween.y * $scale * BASE)}px`;
+  $: y = `${Math.round($tween.y * $scale * BASE * -1)}px`;
   $: r = `${$tween.r * $scale}deg`;
   $: s = flip ? -1 : 1;
+
   $: transform = `--transform: translate(${x}, ${y}) rotate(${r}) scaleX(${s});`;
+  $: pos = `--pos: ${$scale * frame.x * -1}px ${$scale * frame.y * -1};`;
+  $: size = `--size: ${data.size * $scale}px;`;
 
   $: style = `${src} ${size} ${pos} ${transform}`;
 </script>
