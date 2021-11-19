@@ -1,7 +1,9 @@
 id,sprite,appear,enter,exit,delay,cycle,loop,duration,start_x,end_x,start_y,end_y,start_r,end_r,z,flip
 byline,russell,enter,,,,walk,,4000,-1,3,,,,,,
 byline,russell,,,,,,,,3,3,,,,,,
-byline,russell,,,,1000,walk,,2000,3,1,,,,,,
+byline,russell,,,,1000,walk,,2000,3,1,,,,,,TRUE
 byline,russell,,,,,,,,1,1,,,,,,
-eat,russell,,,,,walk,,1000,1,1,,,,,,
+eat,russell,,,,,walk,,,1,1,,,,,,
 eat,burger,,,,,,TRUE,5000,11,-1,3,3,,,,
+daughter,russell,,,,,,,,1,1,,,,,,
+daughter,hospital,,,,,,,,5,3,,,,,,

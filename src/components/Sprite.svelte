@@ -121,6 +121,6 @@
     background-position: var(--pos);
     width: var(--size);
     height: var(--size);
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
   }
 </style>

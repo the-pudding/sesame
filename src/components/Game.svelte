@@ -81,7 +81,7 @@
     bottom: 4em;
     left: 50%;
     transform: translate(-50%, 0);
-    outline: 1px solid green;
+    /* outline: 1px solid green; */
     pointer-events: none;
   }
 
