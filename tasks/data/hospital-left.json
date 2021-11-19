@@ -1,0 +1,68 @@
+{ "frames": [
+   {
+    "filename": "hospital-left 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 1280, "h": 1280 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1280, "h": 1280 },
+    "sourceSize": { "w": 1280, "h": 1280 },
+    "duration": 100
+   },
+   {
+    "filename": "hospital-left 1.aseprite",
+    "frame": { "x": 1280, "y": 0, "w": 1280, "h": 1280 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1280, "h": 1280 },
+    "sourceSize": { "w": 1280, "h": 1280 },
+    "duration": 100
+   },
+   {
+    "filename": "hospital-left 2.aseprite",
+    "frame": { "x": 2560, "y": 0, "w": 1280, "h": 1280 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1280, "h": 1280 },
+    "sourceSize": { "w": 1280, "h": 1280 },
+    "duration": 100
+   },
+   {
+    "filename": "hospital-left 3.aseprite",
+    "frame": { "x": 3840, "y": 0, "w": 1280, "h": 1280 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1280, "h": 1280 },
+    "sourceSize": { "w": 1280, "h": 1280 },
+    "duration": 100
+   },
+   {
+    "filename": "hospital-left 4.aseprite",
+    "frame": { "x": 5120, "y": 0, "w": 1280, "h": 1280 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1280, "h": 1280 },
+    "sourceSize": { "w": 1280, "h": 1280 },
+    "duration": 100
+   },
+   {
+    "filename": "hospital-left 5.aseprite",
+    "frame": { "x": 6400, "y": 0, "w": 1280, "h": 1280 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1280, "h": 1280 },
+    "sourceSize": { "w": 1280, "h": 1280 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3-beta7",
+  "image": "hospital-left.png",
+  "format": "RGBA8888",
+  "size": { "w": 7680, "h": 1280 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "slide", "from": 1, "to": 5, "direction": "forward", "color": "#000000ff" }
+  ]
+ }
+}

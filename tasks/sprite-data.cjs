@@ -6,6 +6,13 @@ const SCALE = 10;
 const src = `${CWD}/tasks/data`;
 const files = fs.readdirSync(src).filter(d => d.includes("json"));
 
+const getTagName = ({ tags, index }) => {
+	if (!tags.length) return undefined;
+	const match = tags.find(t => index >= t.from && index <= t.to);
+	if (match) return match.name;
+	return undefined;
+};
+
 (() => {
 	const result = files.map(file => {
 		const id = file.replace(".json", "");
@@ -19,7 +26,7 @@ const files = fs.readdirSync(src).filter(d => d.includes("json"));
 			index,
 			x: Math.floor(frame.x / SCALE),
 			y: Math.floor(frame.y / SCALE),
-			name: tags.length ? tags.find(t => index >= t.from && index <= t.to).name : undefined
+			name: getTagName({ tags, index })
 		}));
 
 		return {

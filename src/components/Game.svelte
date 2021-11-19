@@ -83,6 +83,8 @@
     transform: translate(-50%, 0);
     /* outline: 1px solid green; */
     pointer-events: none;
+    /* box-shadow: 0px 4em 2em -4em hsla(0, 0%, 0%, 0.3); */
+    /* border-bottom: 0.5vw solid hsla(0, 0%, 0%, 0.1); */
   }
 
   .stage:before {

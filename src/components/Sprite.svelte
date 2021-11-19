@@ -17,6 +17,7 @@
   let cycleInterval;
   let frameIndex = 0;
   let flip;
+  let z;
 
   const pause = (delay) => {
     return new Promise((resolve) => {
@@ -59,7 +60,12 @@
     let i = 0;
     cycleInterval = setInterval(() => {
       i += 1;
-      if (i >= frames.length) i = 0;
+      if (i >= frames.length) {
+        if (step.once) {
+          i -= 1;
+          clearInterval(cycleInterval);
+        } else i = 0;
+      }
       frameIndex = frames[i].index;
     }, FRAMERATE);
   };
@@ -70,7 +76,9 @@
 
       if (cycleInterval) clearInterval(cycleInterval);
 
+      // "globals"
       flip = step.flip;
+      z = step.z;
 
       cycle(step);
 
@@ -103,8 +111,9 @@
   $: transform = `--transform: translate(${x}, ${y}) rotate(${r}) scaleX(${s});`;
   $: pos = `--pos: ${$scale * frame.x * -1}px ${$scale * frame.y * -1};`;
   $: size = `--size: ${data.size * $scale}px;`;
+  $: zIndex = `--z-index: ${z || 0};`;
 
-  $: style = `${src} ${size} ${pos} ${transform}`;
+  $: style = `${src} ${size} ${pos} ${transform} ${zIndex}`;
 </script>
 
 <div {style} />
@@ -121,6 +130,7 @@
     background-position: var(--pos);
     width: var(--size);
     height: var(--size);
+    z-index: var(--z-index);
     /* outline: 1px solid red; */
   }
 </style>
