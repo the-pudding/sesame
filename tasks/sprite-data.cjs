@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 const CWD = process.cwd();
-const SCALE = 10;
+const SCALE = 8;
 
 const src = `${CWD}/tasks/data`;
 const files = fs.readdirSync(src).filter(d => d.includes("json"));

@@ -131,6 +131,6 @@
     width: var(--size);
     height: var(--size);
     z-index: var(--z-index);
-    /* outline: 1px solid red; */
+    outline: 2px dashed red;
   }
 </style>

@@ -16,7 +16,7 @@
   const UNITS = 10;
   const BASE = 32;
   const SIZE = BASE * UNITS;
-  const MAX_SCALE = 5;
+  const MAX_SCALE = 4;
 
   let beatIndex = 0;
   let scale = writable();
@@ -32,7 +32,8 @@
   const getSpriteData = (name) => spriteData.find((d) => d.id === name);
 
   $: scale.set(Math.min(MAX_SCALE, ($viewport.width * 0.9) / SIZE));
-
+  $: margin = Math.ceil(($viewport.width - $scale * BASE * UNITS) / 2);
+  $: console.log(margin);
   $: setContext("Game", { scale, BASE });
 
   $: id = beats[beatIndex].id;
@@ -45,7 +46,7 @@
 <div id="game" class:visible>
   <p>{10} x {5} (scale: {$scale})</p>
 
-  <div class="stage" style="--scale: {$scale};">
+  <div class="stage" style="--scale: {$scale}; --margin: {margin}px;">
     {#each sprites as [name, steps] (name)}
       <Sprite {id} {name} {steps} data={getSpriteData(name)} />
     {/each}
@@ -81,17 +82,15 @@
     bottom: 4em;
     left: 50%;
     transform: translate(-50%, 0);
-    /* outline: 1px solid green; */
     pointer-events: none;
-    /* box-shadow: 0px 4em 2em -4em hsla(0, 0%, 0%, 0.3); */
-    /* border-bottom: 0.5vw solid hsla(0, 0%, 0%, 0.1); */
+    outline: 2px dashed green;
   }
 
   .stage:before {
     content: "";
     background-image: linear-gradient(right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
     display: block;
-    width: 10%;
+    width: var(--margin);
     height: 100%;
     position: absolute;
     left: 0;
@@ -104,7 +103,7 @@
     content: "";
     background-image: linear-gradient(left, rgba(0, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
     display: block;
-    width: 10%;
+    width: var(--margin);
     height: 100%;
     position: absolute;
     right: 0;

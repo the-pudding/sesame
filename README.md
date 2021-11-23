@@ -1,3 +1,6 @@
+# Animation notes
+* Walk: 600ms per unit
+
 # Svelte Starter
 
 This [starter template](https://github.com/the-pudding/svelte-starter) aims for fast and easy web development speficially for data-driven and visual stories. It is an opinionated template built on top of [SvelteKit](https://kit.svelte.dev/).
