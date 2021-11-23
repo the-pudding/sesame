@@ -33,7 +33,6 @@
 
   $: scale.set(Math.min(MAX_SCALE, ($viewport.width * 0.9) / SIZE));
   $: margin = Math.ceil(($viewport.width - $scale * BASE * UNITS) / 2);
-  $: console.log(margin);
   $: setContext("Game", { scale, BASE });
 
   $: id = beats[beatIndex].id;

@@ -51,11 +51,14 @@
   const cycle = (step) => {
     const frames = data.frames.filter((d) => d.name === step.cycle);
 
-    frameIndex = 0;
-
     jump(step);
 
-    if (!frames.length) return;
+    if (!frames.length) {
+      frameIndex = 0;
+      return;
+    }
+
+    frameIndex = frames[0].index;
 
     let i = 0;
     cycleInterval = setInterval(() => {
