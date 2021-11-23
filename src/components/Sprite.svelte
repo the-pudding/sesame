@@ -11,7 +11,7 @@
   const { scale, BASE } = getContext("Game");
   const FRAMERATE = 100;
 
-  const src = `--src: url(assets/sprites/${name}.png);`;
+  const src = `--src: url(/assets/sprites/${name}.png);`;
 
   let tween = tweened(0);
   let cycleInterval;
