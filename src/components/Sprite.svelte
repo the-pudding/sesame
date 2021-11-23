@@ -1,4 +1,5 @@
 <script>
+  import { base } from "$app/paths";
   import { onMount, getContext } from "svelte";
   import { tweened } from "svelte/motion";
   import runWithCancel from "$utils/runWithCancel.js";
@@ -11,7 +12,7 @@
   const { scale, BASE } = getContext("Game");
   const FRAMERATE = 100;
 
-  const path = `assets/sprites/${name}.png`;
+  const path = `${base}/assets/sprites/${name}.png`;
   const src = `--src: url(${path});`;
 
   let tween = tweened(0);
@@ -120,7 +121,6 @@
   $: style = `${src} ${size} ${pos} ${transform} ${zIndex}`;
 </script>
 
-<img src={path} alt="omg" />
 <div {style} />
 
 <style>
