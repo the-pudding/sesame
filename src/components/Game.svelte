@@ -13,9 +13,10 @@
 
   export let visible;
 
-  const UNITS = 10;
+  const UNITS_X = 10;
+  const UNITS_Y = 4;
   const BASE = 32;
-  const SIZE = BASE * UNITS;
+  const SIZE = BASE * UNITS_X;
   const MAX_SCALE = 4;
 
   let beatIndex = 0;
@@ -32,7 +33,7 @@
   const getSpriteData = (name) => spriteData.find((d) => d.id === name);
 
   $: scale.set(Math.min(MAX_SCALE, ($viewport.width * 0.9) / SIZE));
-  $: margin = Math.ceil(($viewport.width - $scale * BASE * UNITS) / 2);
+  $: margin = Math.ceil(($viewport.width - $scale * BASE * UNITS_X) / 2);
   $: setContext("Game", { scale, BASE });
 
   $: id = beats[beatIndex].id;
@@ -40,12 +41,13 @@
   $: deep = beats[beatIndex].deep;
   $: cues = cueData.filter((d) => d.id === id);
   $: sprites = groups(cues, (d) => d.sprite);
+  $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px;`;
 </script>
 
 <div id="game" class:visible>
-  <p>{10} x {5} (scale: {$scale})</p>
+  <p>(scale: {$scale})</p>
 
-  <div class="stage" style="--scale: {$scale}; --margin: {margin}px;">
+  <div class="stage" {style}>
     {#each sprites as [name, steps] (name)}
       <Sprite {id} {name} {steps} data={getSpriteData(name)} />
     {/each}
@@ -71,9 +73,6 @@
   }
 
   .stage {
-    --base: 32px;
-    --unitsX: 10;
-    --unitsY: 5;
     width: calc(var(--unitsX) * var(--scale) * var(--base));
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
