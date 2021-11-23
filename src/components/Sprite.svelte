@@ -11,7 +11,8 @@
   const { scale, BASE } = getContext("Game");
   const FRAMERATE = 100;
 
-  const src = `--src: url(/assets/sprites/${name}.png);`;
+  const path = `assets/sprites/${name}.png`;
+  const src = `--src: url(${path});`;
 
   let tween = tweened(0);
   let cycleInterval;
@@ -119,6 +120,7 @@
   $: style = `${src} ${size} ${pos} ${transform} ${zIndex}`;
 </script>
 
+<img src={path} alt="omg" />
 <div {style} />
 
 <style>
