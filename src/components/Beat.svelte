@@ -21,7 +21,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    padding: 5em 0;
+    padding: 2em;
     pointer-events: none;
   }
 
