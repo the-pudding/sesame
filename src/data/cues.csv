@@ -1,10 +1,10 @@
 id,sprite,appear,delay,once,cycle,loop,duration,start_x,end_x,start_y,end_y,start_r,end_r,z,flip
 byline,russell,,,,walk,,3000,-2,2,,,,,,
 byline,russell,,,,,,,2,2,,,,,,
-byline,michelle,TRUE,,,,,,9.7,9.7,,,,,,TRUE
-byline,michelle,,1800,,wave,,600,9.7,9.4,,,0,-7,,TRUE
-byline,michelle,,,,wave,,2400,9.4,9.4,,,-7,-7,,TRUE
-byline,michelle,,,,wave,,600,9.4,9.7,,,-7,0,,TRUE
+byline,michelle,TRUE,,,,,,10,10,,,,,,TRUE
+byline,michelle,,1800,,wave,,600,10,9.5,,,0,-6,,TRUE
+byline,michelle,,,,wave,,2400,9.5,9.5,,,-6,-6,,TRUE
+byline,michelle,,,,wave,,600,9.5,10,,,-6,0,,TRUE
 eat,russell,,,,walk,,,2,2,,,,,,
 eat,burger,,,,,TRUE,5000,11,-2,3,3,,,,
 daughter,russell,,,,walk,,3000,2,7,,,,,2,

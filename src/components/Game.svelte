@@ -84,7 +84,7 @@
     left: 50%;
     transform: translate(-50%, 0);
     pointer-events: none;
-    /* outline: 2px dashed green; */
+    outline: 2px dashed green;
   }
 
   .stage:before {
