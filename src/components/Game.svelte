@@ -46,8 +46,6 @@
 </script>
 
 <div id="game" class:visible>
-  <p>(scale: {$scale})</p>
-
   <div class="stage" {style}>
     {#each sprites as [name, steps] (name)}
       <div transition:fade={{ duration: steps[0].appear ? 0 : 500 }}>
@@ -56,33 +54,34 @@
     {/each}
   </div>
 
-  <Beat {text} {deep} />
+  <div class="beats">
+    <Beat {text} {deep} />
+  </div>
 
   <Tap debug={false} full={true} enableKeyboard={true} size="50%" on:tap={onTap} />
 </div>
 
 <style>
-  p {
-    text-align: right;
-    padding: 0 1em;
-  }
-
   #game {
     display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    padding-top: 3em;
+    overflow: hidden;
   }
 
   #game.visible {
-    display: block;
+    display: flex;
   }
 
   .stage {
+    position: relative;
+    min-width: calc(var(--unitsX) * var(--scale) * var(--base));
+    min-height: calc(var(--unitsY) * var(--scale) * var(--base));
     width: calc(var(--unitsX) * var(--scale) * var(--base));
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
-    position: fixed;
-    bottom: 4em;
-    left: 50%;
-    transform: translate(-50%, 0);
     pointer-events: none;
     outline: 2px dashed green;
   }
@@ -92,10 +91,10 @@
     background-image: linear-gradient(right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
     display: block;
     width: var(--margin);
-    height: 120%;
+    height: 110%;
     position: absolute;
     left: 0;
-    top: -10%;
+    top: 0;
     transform: translateX(-100%);
     z-index: var(--z-top);
   }
@@ -105,11 +104,16 @@
     background-image: linear-gradient(left, rgba(0, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
     display: block;
     width: var(--margin);
-    height: 120%;
+    height: 110%;
     position: absolute;
     right: 0;
-    top: -10%;
+    top: 0;
     transform: translateX(100%);
     z-index: var(--z-top);
+  }
+
+  .beats {
+    position: relative;
+    flex: 1;
   }
 </style>

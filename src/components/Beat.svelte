@@ -4,28 +4,30 @@
 
   export let text;
   export let deep;
+
+  $: center = text.length < 60;
 </script>
 
 {#key text}
   <div transition:fade>
-    <p>{@html text}</p>
+    <p class:center>{@html text}</p>
   </div>
 {/key}
 
 <style>
   div {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 2em;
     pointer-events: none;
+    height: 100%;
   }
 
   p {
-    max-width: 25em;
+    outline: 2px dashed purple;
+    max-width: 30em;
+    padding: 1em;
+    margin: 0 auto;
+  }
+
+  p.center {
+    text-align: center;
   }
 </style>
