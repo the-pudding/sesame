@@ -15,7 +15,7 @@
   const path = `${base}/assets/sprites/${name}.png`;
   const src = `--src: url(${path});`;
 
-  let tween = tweened(0);
+  let tween = tweened({ x: 10, y: 0, r: 0 });
   let cycleInterval;
   let frameIndex = 0;
   let flip;
@@ -78,7 +78,6 @@
   function* run() {
     for (let step of steps) {
       if (step.delay) yield pause(step.delay);
-
       if (cycleInterval) clearInterval(cycleInterval);
 
       // "globals"
