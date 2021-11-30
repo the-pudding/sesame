@@ -15,11 +15,12 @@
   const path = `${base}/assets/sprites/${name}.png`;
   const src = `--src: url(${path});`;
 
-  let tween = tweened(0);
+  let tween = tweened({ x: 10, y: 0, r: 0 });
   let cycleInterval;
   let frameIndex = 0;
   let flip;
   let z;
+  //let visible = false;
 
   const pause = (delay) => {
     return new Promise((resolve) => {
@@ -78,7 +79,7 @@
   function* run() {
     for (let step of steps) {
       if (step.delay) yield pause(step.delay);
-
+      //visible = true;
       if (cycleInterval) clearInterval(cycleInterval);
 
       // "globals"
@@ -138,5 +139,8 @@
     height: var(--size);
     z-index: var(--z-index);
     /* outline: 2px dashed red; */
+  }
+  .hide {
+    display: none;
   }
 </style>
