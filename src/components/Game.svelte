@@ -1,6 +1,7 @@
 <script>
   import { setContext, getContext } from "svelte";
   import { writable } from "svelte/store";
+  import { fade } from "svelte/transition";
   import { groups } from "d3";
   import viewport from "$stores/viewport.js";
   import Sprite from "$components/Sprite.svelte";
@@ -49,7 +50,9 @@
 
   <div class="stage" {style}>
     {#each sprites as [name, steps] (name)}
-      <Sprite {id} {name} {steps} data={getSpriteData(name)} />
+      <div transition:fade={{ duration: steps[0].appear ? 0 : 500 }}>
+        <Sprite {id} {name} {steps} data={getSpriteData(name)} />
+      </div>
     {/each}
   </div>
 
@@ -81,7 +84,7 @@
     left: 50%;
     transform: translate(-50%, 0);
     pointer-events: none;
-    outline: 2px dashed green;
+    /* outline: 2px dashed green; */
   }
 
   .stage:before {
@@ -89,10 +92,10 @@
     background-image: linear-gradient(right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
     display: block;
     width: var(--margin);
-    height: 100%;
+    height: 120%;
     position: absolute;
     left: 0;
-    top: 0;
+    top: -10%;
     transform: translateX(-100%);
     z-index: var(--z-top);
   }
@@ -102,10 +105,10 @@
     background-image: linear-gradient(left, rgba(0, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
     display: block;
     width: var(--margin);
-    height: 100%;
+    height: 120%;
     position: absolute;
     right: 0;
-    top: 0;
+    top: -10%;
     transform: translateX(100%);
     z-index: var(--z-top);
   }

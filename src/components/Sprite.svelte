@@ -128,6 +128,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    transform-origin: 50% 100%;
     transform: var(--transform);
     background: var(--src);
     background-repeat: no-repeat;
@@ -136,6 +137,6 @@
     width: var(--size);
     height: var(--size);
     z-index: var(--z-index);
-    outline: 2px dashed red;
+    /* outline: 2px dashed red; */
   }
 </style>
