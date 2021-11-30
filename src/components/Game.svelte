@@ -20,7 +20,7 @@
   const SIZE = BASE * UNITS_X;
   const MAX_SCALE = 4;
 
-  let beatIndex = 0;
+  let beatIndex = 16;
   let scale = writable();
 
   const beats = [].concat(...copy.scenes.map((d) => d.beats));
@@ -40,15 +40,16 @@
   $: id = beats[beatIndex].id;
   $: text = beats[beatIndex].text;
   $: deep = beats[beatIndex].deep;
-  $: cues = cueData.filter((d) => d.id === id);
+  $: cues = cueData.filter((d) => d.id === id && d.sprite);
   $: sprites = groups(cues, (d) => d.sprite);
   $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px;`;
+  $: console.log({ id });
 </script>
 
 <div id="game" class:visible>
   <div class="stage" {style}>
     {#each sprites as [name, steps] (name)}
-      <div transition:fade={{ duration: steps[0].appear ? 0 : 500 }}>
+      <div transition:fade>
         <Sprite {id} {name} {steps} data={getSpriteData(name)} />
       </div>
     {/each}
