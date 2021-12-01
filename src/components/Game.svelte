@@ -20,7 +20,7 @@
   const SIZE = BASE * UNITS_X;
   const MAX_SCALE = 4;
 
-  let beatIndex = 16;
+  let beatIndex = 0;
   let scale = writable();
 
   const beats = [].concat(...copy.scenes.map((d) => d.beats));
