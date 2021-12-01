@@ -118,6 +118,12 @@
   $: zIndex = `--z-index: ${z || 0};`;
 
   $: style = `${src} ${size} ${pos} ${transform} ${zIndex}`;
+
+  onMount(() => {
+    return () => {
+      if (cycleInterval) clearInterval(cycleInterval);
+    };
+  });
 </script>
 
 <div {style} />
