@@ -52,7 +52,6 @@
 
   const cycle = (step) => {
     const frames = data.frames.filter((d) => d.name === step.cycle);
-
     jump(step);
 
     if (!frames.length) {
@@ -113,12 +112,13 @@
   $: s = flip ? -1 : 1;
 
   $: transform = `--transform: translate3d(${x}, ${y}, 0) rotate(${r}) scaleX(${s});`;
-  $: pos = `--pos: ${$scale * frame.x * -1}px ${$scale * frame.y * -1};`;
+  $: pos = `--pos: ${$scale * frame.x * -1}px ${$scale * frame.y * -1}px;`;
   $: size = `--size: ${data.size * $scale}px;`;
   $: zIndex = `--z-index: ${z || 0};`;
+  $: cols = `--cols: ${data.cols};`;
+  $: rows = `--rows: ${data.rows};`;
 
-  $: style = `${src} ${size} ${pos} ${transform} ${zIndex}`;
-
+  $: style = `${src} ${size} ${pos} ${transform} ${zIndex} ${rows} ${cols}`;
   onMount(() => {
     return () => {
       if (cycleInterval) clearInterval(cycleInterval);
@@ -133,12 +133,12 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    transform-origin: 50% 100%;
+    transform-origin: 50% 50%;
     transform: var(--transform);
     background: var(--src);
     background-repeat: no-repeat;
-    background-size: cover;
     background-position: var(--pos);
+    background-size: calc(100% * var(--cols)) calc(100% * var(--rows));
     width: var(--size);
     height: var(--size);
     z-index: var(--z-index);

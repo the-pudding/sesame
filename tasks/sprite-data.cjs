@@ -19,7 +19,10 @@ const getTagName = ({ tags, index }) => {
 		console.log(id);
 		const json = JSON.parse(fs.readFileSync(`${src}/${file}`, "utf8"));
 
-		const size = Math.floor(json.meta.size.h / SCALE);
+		const rawSize = json.frames[0].sourceSize.w;
+		const size = Math.floor(rawSize / SCALE);
+		const cols = json.meta.size.w / rawSize;
+		const rows = json.meta.size.h / rawSize;
 		const tags = json.meta.frameTags;
 
 		const frames = json.frames.map(({ frame }, index) => ({
@@ -32,6 +35,8 @@ const getTagName = ({ tags, index }) => {
 		return {
 			id,
 			size,
+			rows,
+			cols,
 			frames,
 		};
 	});

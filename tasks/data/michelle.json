@@ -37,7 +37,7 @@
    },
    {
     "filename": "michelle 4.aseprite",
-    "frame": { "x": 2048, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -46,7 +46,7 @@
    },
    {
     "filename": "michelle 5.aseprite",
-    "frame": { "x": 2560, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -55,7 +55,7 @@
    },
    {
     "filename": "michelle 6.aseprite",
-    "frame": { "x": 3072, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -64,7 +64,7 @@
    },
    {
     "filename": "michelle 7.aseprite",
-    "frame": { "x": 3584, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -73,7 +73,7 @@
    },
    {
     "filename": "michelle 8.aseprite",
-    "frame": { "x": 4096, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -82,7 +82,7 @@
    },
    {
     "filename": "michelle 9.aseprite",
-    "frame": { "x": 4608, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -91,7 +91,7 @@
    },
    {
     "filename": "michelle 10.aseprite",
-    "frame": { "x": 5120, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -100,7 +100,7 @@
    },
    {
     "filename": "michelle 11.aseprite",
-    "frame": { "x": 5632, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -109,7 +109,7 @@
    },
    {
     "filename": "michelle 12.aseprite",
-    "frame": { "x": 6144, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -118,7 +118,7 @@
    },
    {
     "filename": "michelle 13.aseprite",
-    "frame": { "x": 6656, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -131,10 +131,10 @@
   "version": "1.3-beta7",
   "image": "michelle.png",
   "format": "RGBA8888",
-  "size": { "w": 7168, "h": 512 },
+  "size": { "w": 2048, "h": 1536 },
   "scale": "1",
   "frameTags": [
-   { "name": "walk", "from": 2, "to": 8, "direction": "forward", "color": "#000000ff" },
+   { "name": "walk", "from": 1, "to": 8, "direction": "forward", "color": "#000000ff" },
    { "name": "wave", "from": 9, "to": 13, "direction": "forward", "color": "#000000ff" }
   ]
  }
