@@ -31,7 +31,7 @@
     beatIndex = Math.min(Math.max(0, temp), beats.length - 1);
   };
 
-  const getSpriteData = (name) => spriteData.find((d) => d.id === name);
+  const getSpriteData = (key) => spriteData.find((d) => d.id === key.split("_")[0]);
 
   $: scale.set(Math.min(MAX_SCALE, ($viewport.width * 0.9) / SIZE));
   $: margin = Math.ceil(($viewport.width - $scale * BASE * UNITS_X) / 2);
@@ -41,7 +41,7 @@
   $: text = beats[beatIndex].text;
   $: deep = beats[beatIndex].deep;
   $: cues = cueData.filter((d) => d.id === id && d.sprite);
-  $: sprites = groups(cues, (d) => d.sprite);
+  $: sprites = groups(cues, (d) => d.key);
   $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px;`;
 </script>
 
@@ -52,9 +52,9 @@
 </select>
 <div id="game" class:visible>
   <div class="stage" {style}>
-    {#each sprites as [name, steps] (name)}
+    {#each sprites as [key, steps] (key)}
       <div in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>
-        <Sprite {id} {name} {steps} data={getSpriteData(name)} />
+        <Sprite {id} {steps} name={key.split("_")[0]} data={getSpriteData(key)} />
       </div>
     {/each}
   </div>

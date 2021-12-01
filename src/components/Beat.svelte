@@ -9,7 +9,7 @@
 </script>
 
 {#key text}
-  <div transition:fade>
+  <div in:fade={{ delay: 750, duration: 250 }} out:fade={{ duration: 250 }}>
     <p class:center>{@html text}</p>
   </div>
 {/key}
