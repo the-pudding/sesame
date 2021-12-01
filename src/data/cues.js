@@ -2,6 +2,7 @@ import cueData from "$data/cues.csv";
 
 const clean = cueData.map(d => ({
 	...d,
+	key: `${d.sprite}_${d.dupe}`,
 	duration: d.duration === "" ? undefined : +d.duration,
 	delay: +d.delay,
 	start_x: +d.start_x,

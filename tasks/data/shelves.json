@@ -1,6 +1,6 @@
 { "frames": [
    {
-    "filename": "shelf-e.aseprite",
+    "filename": "shelves.aseprite",
     "frame": { "x": 0, "y": 0, "w": 1024, "h": 1024 },
     "rotated": false,
     "trimmed": false,
@@ -12,7 +12,7 @@
  "meta": {
   "app": "https://www.aseprite.org/",
   "version": "1.3-beta7",
-  "image": "shelf-e.png",
+  "image": "shelves.png",
   "format": "RGBA8888",
   "size": { "w": 1024, "h": 1024 },
   "scale": "1",
