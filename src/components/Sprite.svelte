@@ -112,7 +112,7 @@
   $: r = `${$tween.r * $scale}deg`;
   $: s = flip ? -1 : 1;
 
-  $: transform = `--transform: translate(${x}, ${y}) rotate(${r}) scaleX(${s});`;
+  $: transform = `--transform: translate3d(${x}, ${y}, 0) rotate(${r}) scaleX(${s});`;
   $: pos = `--pos: ${$scale * frame.x * -1}px ${$scale * frame.y * -1};`;
   $: size = `--size: ${data.size * $scale}px;`;
   $: zIndex = `--z-index: ${z || 0};`;
@@ -142,6 +142,7 @@
     width: var(--size);
     height: var(--size);
     z-index: var(--z-index);
+    will-change: transform;
     /* outline: 2px dashed red; */
   }
 </style>

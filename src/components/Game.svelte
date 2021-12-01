@@ -43,13 +43,17 @@
   $: cues = cueData.filter((d) => d.id === id && d.sprite);
   $: sprites = groups(cues, (d) => d.sprite);
   $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px;`;
-  $: console.log({ id });
 </script>
 
+<select bind:value={id} style="position: absolute; top: 0; right: 0; z-index: 10000001;">
+  {#each beats as b}
+    <option>{b.id}</option>
+  {/each}
+</select>
 <div id="game" class:visible>
   <div class="stage" {style}>
     {#each sprites as [name, steps] (name)}
-      <div transition:fade>
+      <div in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>
         <Sprite {id} {name} {steps} data={getSpriteData(name)} />
       </div>
     {/each}
