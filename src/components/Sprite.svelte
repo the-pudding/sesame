@@ -119,6 +119,8 @@
   $: rows = `--rows: ${data.rows};`;
 
   $: style = `${src} ${size} ${pos} ${transform} ${zIndex} ${rows} ${cols}`;
+  $: deep = steps[0].deep;
+
   onMount(() => {
     return () => {
       if (cycleInterval) clearInterval(cycleInterval);
@@ -126,7 +128,7 @@
   });
 </script>
 
-<div {style} />
+<div {style} class:deep />
 
 <style>
   div {
@@ -144,5 +146,21 @@
     z-index: var(--z-index);
     will-change: transform;
     /* outline: 2px dashed red; */
+  }
+
+  div.deep {
+    cursor: pointer;
+  }
+
+  div.deep:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -5%;
+    left: -5%;
+    width: 50%;
+    height: 50%;
+    box-shadow: 0 0 1vw 1vw red;
+    border-radius: 50%;
   }
 </style>

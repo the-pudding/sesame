@@ -76,6 +76,8 @@
     box-shadow: none;
     pointer-events: auto;
     display: flex;
+    justify-content: center;
+    transition: background 50ms ease-in-out;
   }
 
   button:disabled {
@@ -84,7 +86,7 @@
   }
 
   button:hover {
-    background-color: rgba(255, 255, 255, 0);
+    /* background-color: rgba(0, 0, 0, 0.1); */
   }
 
   .left {
@@ -175,6 +177,17 @@
     display: inline-block;
     line-height: 1;
     opacity: 0.5;
+    transform-origin: 50% 50%;
+    transition: transform 50ms ease-in-out;
+  }
+
+  button:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  button:hover span {
+    opacity: 1;
+    transform: scale(1.25);
   }
 
   .debug .left {

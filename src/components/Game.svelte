@@ -1,9 +1,9 @@
 <script>
   import { browser } from "$app/env";
-  import { setContext, getContext } from "svelte";
+  import { onMount, setContext, getContext } from "svelte";
   import { writable } from "svelte/store";
   import { fade } from "svelte/transition";
-  import { groups } from "d3";
+  import { groups, format } from "d3";
   import viewport from "$stores/viewport.js";
   import Sprite from "$components/Sprite.svelte";
   import Beat from "$components/Beat.svelte";
@@ -11,6 +11,7 @@
   import cueData from "$data/cues.js";
   import spriteData from "$data/sprites.json";
   import noScroll from "$utils/noScroll.js";
+  import preload from "$utils/preload.js";
 
   const { copy } = getContext("App");
 
@@ -46,10 +47,16 @@
   $: cues = cueData.filter((d) => d.id === id && d.sprite);
   $: sprites = groups(cues, (d) => d.key);
   $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px;`;
+  $: tapWidth = format(".1%")(($viewport.width - UNITS_X * $scale * BASE) / 2 / $viewport.width);
+
   $: if (browser)
     outro
       ? window.removeEventListener("scroll", noScroll)
       : window.addEventListener("scroll", noScroll);
+
+  onMount(() => {
+    preload(cueData);
+  });
 </script>
 
 <select bind:value={id}>
@@ -78,9 +85,15 @@
     {/if}
   </div>
 
-  {#if !outro}
-    <Tap debug={false} full={true} enableKeyboard={true} size="50%" on:tap={onTap} />
-  {/if}
+  <Tap
+    debug={false}
+    full={true}
+    showArrows={true}
+    enableKeyboard={true}
+    size={tapWidth}
+    arrowSize={"5vw"}
+    on:tap={onTap}
+  />
 </div>
 
 <style>
