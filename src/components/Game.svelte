@@ -50,7 +50,7 @@
     <option>{b.id}</option>
   {/each}
 </select>
-<div id="game" class:visible>
+<div id="game" class:visible class:outro={id === "outro"}>
   <div class="stage" {style}>
     {#each sprites as [key, steps] (key)}
       <div in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>
@@ -60,17 +60,26 @@
   </div>
 
   <div class="beats">
-    <Beat {text} {deep} />
+    {#if id === "outro"}
+      {#each copy.outro as { value }}
+        <div class="beat">
+          <p>{@html value}</p>
+        </div>
+      {/each}
+    {:else}
+      <Beat {text} {deep} />
+    {/if}
   </div>
 
-  <Tap debug={false} full={true} enableKeyboard={true} size="50%" on:tap={onTap} />
+  {#if id !== "outro"}
+    <Tap debug={false} full={true} enableKeyboard={true} size="50%" on:tap={onTap} />
+  {/if}
 </div>
 
 <style>
   #game {
     display: none;
     flex-direction: column;
-    justify-content: flex-start;
     height: 100vh;
     padding-top: 3em;
     overflow: hidden;
@@ -78,6 +87,11 @@
 
   #game.visible {
     display: flex;
+  }
+
+  #game.outro {
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   .stage {
@@ -88,7 +102,7 @@
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
     pointer-events: none;
-    outline: 2px dashed green;
+    /* outline: 2px dashed green; */
   }
 
   .stage:before {
@@ -120,5 +134,15 @@
   .beats {
     position: relative;
     flex: 1;
+  }
+
+  .beats p {
+    max-width: 30em;
+    padding: 1em;
+    margin: 0 auto;
+  }
+
+  select {
+    /* display: none; */
   }
 </style>
