@@ -1,4 +1,5 @@
 <script>
+  import { browser } from "$app/env";
   import { setContext, getContext } from "svelte";
   import { writable } from "svelte/store";
   import { fade } from "svelte/transition";
@@ -9,6 +10,7 @@
   import Tap from "$components/helpers/Tap.svelte";
   import cueData from "$data/cues.js";
   import spriteData from "$data/sprites.json";
+  import noScroll from "$utils/noScroll.js";
 
   const { copy } = getContext("App");
 
@@ -44,6 +46,10 @@
   $: cues = cueData.filter((d) => d.id === id && d.sprite);
   $: sprites = groups(cues, (d) => d.key);
   $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px;`;
+  $: if (browser)
+    outro
+      ? window.removeEventListener("scroll", noScroll)
+      : window.addEventListener("scroll", noScroll);
 </script>
 
 <select bind:value={id}>
