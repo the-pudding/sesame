@@ -40,27 +40,28 @@
   $: id = beats[beatIndex].id;
   $: text = beats[beatIndex].text;
   $: deep = beats[beatIndex].deep;
+  $: outro = id === "outro";
   $: cues = cueData.filter((d) => d.id === id && d.sprite);
   $: sprites = groups(cues, (d) => d.key);
   $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px;`;
 </script>
 
-<select bind:value={id} style="position: absolute; top: 0; right: 0; z-index: 10000001;">
+<select bind:value={id}>
   {#each beats as b}
     <option>{b.id}</option>
   {/each}
 </select>
-<div id="game" class:visible class:outro={id === "outro"}>
+<div id="game" class:visible class:outro style="height: {$viewport.height + 1}px;">
   <div class="stage" {style}>
     {#each sprites as [key, steps] (key)}
-      <div in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>
+      <div in:fade={{ duration: 200 }} out:fade={{ duration: 1 }}>
         <Sprite {id} {steps} name={key.split("_")[0]} data={getSpriteData(key)} />
       </div>
     {/each}
   </div>
 
   <div class="beats">
-    {#if id === "outro"}
+    {#if outro}
       {#each copy.outro as { value }}
         <div class="beat">
           <p>{@html value}</p>
@@ -71,7 +72,7 @@
     {/if}
   </div>
 
-  {#if id !== "outro"}
+  {#if !outro}
     <Tap debug={false} full={true} enableKeyboard={true} size="50%" on:tap={onTap} />
   {/if}
 </div>
@@ -80,9 +81,9 @@
   #game {
     display: none;
     flex-direction: column;
-    height: 100vh;
     padding-top: 3em;
     overflow: hidden;
+    /* background: pink; */
   }
 
   #game.visible {
@@ -90,8 +91,7 @@
   }
 
   #game.outro {
-    overflow-y: scroll;
-    overflow-x: hidden;
+    height: auto !important;
   }
 
   .stage {
@@ -143,6 +143,10 @@
   }
 
   select {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    z-index: 10000000;
     /* display: none; */
   }
 </style>

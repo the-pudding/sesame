@@ -23,8 +23,8 @@
 <style>
   .toggle {
     position: fixed;
-    bottom: 1rem;
-    left: 1rem;
+    top: 1rem;
+    right: 1rem;
     font-size: 1rem;
     max-width: 6rem;
     z-index: var(--z-overlay);
