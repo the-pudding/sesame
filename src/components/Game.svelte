@@ -40,44 +40,58 @@
   $: id = beats[beatIndex].id;
   $: text = beats[beatIndex].text;
   $: deep = beats[beatIndex].deep;
+  $: outro = id === "outro";
   $: cues = cueData.filter((d) => d.id === id && d.sprite);
   $: sprites = groups(cues, (d) => d.key);
   $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px;`;
 </script>
 
-<select bind:value={id} style="position: absolute; top: 0; right: 0; z-index: 10000001;">
+<select bind:value={id}>
   {#each beats as b}
     <option>{b.id}</option>
   {/each}
 </select>
-<div id="game" class:visible>
+<div id="game" class:visible class:outro style="height: {$viewport.height + 1}px;">
   <div class="stage" {style}>
     {#each sprites as [key, steps] (key)}
-      <div in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>
+      <div in:fade={{ duration: 200 }} out:fade={{ duration: 1 }}>
         <Sprite {id} {steps} name={key.split("_")[0]} data={getSpriteData(key)} />
       </div>
     {/each}
   </div>
 
   <div class="beats">
-    <Beat {text} {deep} />
+    {#if outro}
+      {#each copy.outro as { value }}
+        <div class="beat">
+          <p>{@html value}</p>
+        </div>
+      {/each}
+    {:else}
+      <Beat {text} {deep} />
+    {/if}
   </div>
 
-  <Tap debug={false} full={true} enableKeyboard={true} size="50%" on:tap={onTap} />
+  {#if !outro}
+    <Tap debug={false} full={true} enableKeyboard={true} size="50%" on:tap={onTap} />
+  {/if}
 </div>
 
 <style>
   #game {
     display: none;
     flex-direction: column;
-    justify-content: flex-start;
-    height: 100vh;
     padding-top: 3em;
     overflow: hidden;
+    /* background: pink; */
   }
 
   #game.visible {
     display: flex;
+  }
+
+  #game.outro {
+    height: auto !important;
   }
 
   .stage {
@@ -88,7 +102,7 @@
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
     pointer-events: none;
-    outline: 2px dashed green;
+    /* outline: 2px dashed green; */
   }
 
   .stage:before {
@@ -120,5 +134,19 @@
   .beats {
     position: relative;
     flex: 1;
+  }
+
+  .beats p {
+    max-width: 30em;
+    padding: 1em;
+    margin: 0 auto;
+  }
+
+  select {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    z-index: 10000000;
+    /* display: none; */
   }
 </style>

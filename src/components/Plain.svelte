@@ -7,22 +7,29 @@
 <article class:visible>
   {#each copy.scenes as { scene, setting, beats }}
     <section id={scene}>
-      <!-- <h2>scene: {scene}</h2> -->
-      {#each beats.filter((d) => !d.hide) as { text, alt, deep }}
-        <div class="beat">
-          {#if alt}
-            <p>{@html alt}</p>
-          {:else}
-            <p>{@html text}</p>
-          {/if}
-          {#if deep}
-            <details>
-              <summary>More Info</summary>
-              <p>{deep}</p>
-            </details>
-          {/if}
-        </div>
-      {/each}
+      {#if scene === "outro"}
+        {#each copy.outro as { value }}
+          <div class="beat">
+            <p>{@html value}</p>
+          </div>
+        {/each}
+      {:else}
+        {#each beats.filter((d) => !d.hide) as { text, alt, deep }}
+          <div class="beat">
+            {#if alt}
+              <p>{@html alt}</p>
+            {:else}
+              <p>{@html text}</p>
+            {/if}
+            {#if deep}
+              <details>
+                <summary>More Info</summary>
+                <p>{deep}</p>
+              </details>
+            {/if}
+          </div>
+        {/each}
+      {/if}
     </section>
   {/each}
 </article>
