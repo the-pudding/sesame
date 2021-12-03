@@ -39,3 +39,11 @@ main {
 	position: relative;
 	font-size: clamp(18px, 2vw, 32px);
 }
+
+.color-green {
+	background-color: var(--color-green);
+}
+
+.color-pink {
+	background-color: var(--color-pink);
+}

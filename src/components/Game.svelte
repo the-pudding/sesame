@@ -12,6 +12,7 @@
   import spriteData from "$data/sprites.json";
   import noScroll from "$utils/noScroll.js";
   import preload from "$utils/preload.js";
+  import variables from "$data/variables.json";
 
   const { copy } = getContext("App");
 
@@ -32,6 +33,7 @@
     const inc = detail === "right" ? 1 : -1;
     const temp = beatIndex + inc;
     beatIndex = Math.min(Math.max(0, temp), beats.length - 1);
+    window.scrollTo(0, 0);
   };
 
   const getSpriteData = (key) => spriteData.find((d) => d.id === key.split("_")[0]);
@@ -48,7 +50,7 @@
   $: sprites = groups(cues, (d) => d.key);
   $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px;`;
   $: tapWidth = format(".1%")(($viewport.width - UNITS_X * $scale * BASE) / 2 / $viewport.width);
-
+  $: disable = beatIndex === 0 ? ["left"] : beatIndex === beats.length - 1 ? ["right"] : [];
   $: if (browser)
     outro
       ? window.removeEventListener("scroll", noScroll)
@@ -86,12 +88,14 @@
   </div>
 
   <Tap
+    {disable}
     debug={false}
     full={true}
     showArrows={true}
     enableKeyboard={true}
     size={tapWidth}
     arrowSize={"5vw"}
+    arrowStroke={variables.color["gray-dark"]}
     on:tap={onTap}
   />
 </div>
@@ -120,33 +124,34 @@
     width: calc(var(--unitsX) * var(--scale) * var(--base));
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
-    pointer-events: none;
-    /* outline: 2px dashed green; */
+    overflow: hidden;
   }
 
   .stage:before {
     content: "";
-    background-image: linear-gradient(right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
+    background-image: linear-gradient(
+      right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
     display: block;
-    width: var(--margin);
-    height: 110%;
+    width: calc(var(--scale) * var(--base));
+    height: 100%;
     position: absolute;
     left: 0;
     top: 0;
-    transform: translateX(-100%);
     z-index: var(--z-top);
   }
 
   .stage:after {
     content: "";
-    background-image: linear-gradient(left, rgba(0, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
+    background-image: linear-gradient(left, rgba(0, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
     display: block;
-    width: var(--margin);
-    height: 110%;
+    width: calc(var(--scale) * var(--base));
+    height: 100%;
     position: absolute;
     right: 0;
     top: 0;
-    transform: translateX(100%);
     z-index: var(--z-top);
   }
 
@@ -166,6 +171,6 @@
     left: 0;
     position: absolute;
     z-index: 10000000;
-    /* display: none; */
+    display: none;
   }
 </style>

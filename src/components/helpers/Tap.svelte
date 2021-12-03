@@ -57,6 +57,7 @@
 
 <style>
   section {
+    --dur: 150ms;
     position: fixed;
     top: 0;
     left: 0;
@@ -77,16 +78,28 @@
     pointer-events: auto;
     display: flex;
     justify-content: center;
-    transition: background 50ms ease-in-out;
+    transition: all var(--dur) ease-in-out;
+  }
+
+  button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-gray-light);
+    opacity: 0;
+    transition: opacity var(--dur) ease-in-out;
   }
 
   button:disabled {
-    opacity: 0.2;
-    cursor: not-allowed;
+    opacity: 0;
+    pointer-events: none;
   }
 
-  button:hover {
-    /* background-color: rgba(0, 0, 0, 0.1); */
+  button:hover:before {
+    opacity: 0.1;
   }
 
   .left {
@@ -176,13 +189,9 @@
   span {
     display: inline-block;
     line-height: 1;
-    opacity: 0.5;
+    opacity: 0.33;
     transform-origin: 50% 50%;
-    transition: transform 50ms ease-in-out;
-  }
-
-  button:hover {
-    background: rgba(0, 0, 0, 0.05);
+    transition: all var(--dur) ease-in-out;
   }
 
   button:hover span {

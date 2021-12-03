@@ -114,12 +114,11 @@
   $: transform = `--transform: translate3d(${x}, ${y}, 0) rotate(${r}) scaleX(${s});`;
   $: pos = `--pos: ${$scale * frame.x * -1}px ${$scale * frame.y * -1}px;`;
   $: size = `--size: ${data.size * $scale}px;`;
-  $: zIndex = `--z-index: ${z || 0};`;
+  $: zIndex = `--z-index: ${z || 1};`;
   $: cols = `--cols: ${data.cols};`;
   $: rows = `--rows: ${data.rows};`;
 
   $: style = `${src} ${size} ${pos} ${transform} ${zIndex} ${rows} ${cols}`;
-  $: deep = steps[0].deep;
 
   onMount(() => {
     return () => {
@@ -128,7 +127,7 @@
   });
 </script>
 
-<div {style} class:deep />
+<div {style} />
 
 <style>
   div {
@@ -145,22 +144,6 @@
     height: var(--size);
     z-index: var(--z-index);
     will-change: transform;
-    /* outline: 2px dashed red; */
-  }
-
-  div.deep {
-    cursor: pointer;
-  }
-
-  div.deep:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: -5%;
-    left: -5%;
-    width: 50%;
-    height: 50%;
-    box-shadow: 0 0 1vw 1vw red;
-    border-radius: 50%;
+    pointer-events: none;
   }
 </style>
