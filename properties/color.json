@@ -32,6 +32,15 @@
 		},
 		"pink": {
 			"value": "#f6757a"
+		},
+		"peanut": {
+			"value": "#fee761"
+		},
+		"cashew": {
+			"value": "#ead4aa"
+		},
+		"sesame": {
+			"value": "#e4a672"
 		}
 	}
 }

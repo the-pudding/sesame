@@ -3,20 +3,21 @@
   import { fade } from "svelte/transition";
 
   export let text;
-  export let deep;
 
-  $: center = text.length < 60;
+  let el;
+  let center = false;
+
+  $: if (el) center = el.innerText.length < 60;
 </script>
 
 {#key text}
   <div in:fade={{ delay: 750, duration: 250 }} out:fade={{ duration: 250 }}>
-    <p class:center>{@html text}</p>
+    <p bind:this={el} class:center>{@html text}</p>
   </div>
 {/key}
 
 <style>
   div {
-    pointer-events: none;
     height: 100%;
   }
 
