@@ -47,3 +47,15 @@ main {
 .color-pink {
 	background-color: var(--color-pink);
 }
+
+.color-peanut {
+	background-color: var(--color-peanut);
+}
+
+.color-sesame {
+	background-color: var(--color-sesame);
+}
+
+.color-cashew {
+	background-color: var(--color-cashew);
+}
