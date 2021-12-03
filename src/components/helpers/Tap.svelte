@@ -1,6 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import Icon from "$components/helpers/Icon.svelte";
+  import mq from "$stores/mq.js";
 
   export let debug = false;
   export let enableKeyboard = false;
@@ -79,6 +80,7 @@
     display: flex;
     justify-content: center;
     transition: all var(--dur) ease-in-out;
+    line-height: 1;
   }
 
   button:before {
@@ -89,7 +91,7 @@
     width: 100%;
     height: 100%;
     background: var(--color-gray-light);
-    opacity: 0;
+    opacity: 0.5;
     transition: opacity var(--dur) ease-in-out;
   }
 
@@ -98,7 +100,7 @@
     pointer-events: none;
   }
 
-  button:hover:before {
+  .full:hover:before {
     opacity: 0.1;
   }
 
@@ -127,8 +129,17 @@
 
   .left.end,
   .right.end {
-    bottom: 0;
+    bottom: 1em;
     top: auto;
+    align-items: center;
+  }
+
+  .left.end {
+    left: 1em;
+  }
+
+  .right.end {
+    right: 1em;
   }
 
   .up {
@@ -156,6 +167,10 @@
   }
 
   /* full positions */
+  .full:before {
+    opacity: 0;
+  }
+
   .full.left.start,
   .full.right.start {
     align-items: flex-start;
@@ -189,12 +204,16 @@
   span {
     display: inline-block;
     line-height: 1;
-    opacity: 0.33;
+    opacity: 1;
     transform-origin: 50% 50%;
     transition: all var(--dur) ease-in-out;
   }
 
-  button:hover span {
+  .full span {
+    opacity: 0.33;
+  }
+
+  .full:hover span {
     opacity: 1;
     transform: scale(1.25);
   }
@@ -217,5 +236,9 @@
   .debug .down {
     background: orange;
     opacity: 0.5;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    /*  */
   }
 </style>

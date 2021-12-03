@@ -14,6 +14,7 @@
   import noScroll from "$utils/noScroll.js";
   import preload from "$utils/preload.js";
   import variables from "$data/variables.json";
+  import mq from "$stores/mq.js";
 
   const { copy } = getContext("App");
 
@@ -39,7 +40,9 @@
 
   const getSpriteData = (key) => spriteData.find((d) => d.id === key.split("_")[0]);
 
-  $: scale.set(Math.min(MAX_SCALE, ($viewport.width * 0.9) / SIZE));
+  $: mobile = !$mq.lg;
+  $: stageScale = mobile ? 1 : 0.9;
+  $: scale.set(Math.min(MAX_SCALE, ($viewport.width * stageScale) / SIZE));
   $: margin = Math.ceil(($viewport.width - $scale * BASE * UNITS_X) / 2);
   $: setContext("Game", { scale, BASE });
 
@@ -56,7 +59,7 @@
   $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px;`;
   $: tapWidth = format(".1%")(($viewport.width - UNITS_X * $scale * BASE) / 2 / $viewport.width);
   $: disable = beatIndex === 0 ? ["left"] : beatIndex === beats.length - 1 ? ["right"] : [];
-  $: if (false)
+  $: if (browser)
     outro
       ? window.removeEventListener("scroll", noScroll)
       : window.addEventListener("scroll", noScroll);
@@ -99,11 +102,12 @@
   <Tap
     {disable}
     debug={false}
-    full={true}
+    full={!mobile}
     showArrows={true}
     enableKeyboard={true}
-    size={tapWidth}
+    size={mobile ? "10vw" : tapWidth}
     arrowSize={"5vw"}
+    arrowPosition={mobile ? "end" : "center"}
     arrowStroke={variables.color["gray-dark"]}
     on:tap={onTap}
   />
@@ -114,9 +118,7 @@
     display: none;
     flex-direction: column;
     padding-top: 3em;
-    padding-top: 6em;
     overflow: hidden;
-    height: auto !important;
     /* background: pink; */
   }
 
@@ -136,7 +138,6 @@
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
     overflow: hidden;
-    outline: 2px solid green;
   }
 
   .stage:before {

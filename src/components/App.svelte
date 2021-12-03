@@ -12,7 +12,7 @@
   let toggle = "off";
 
   $: plain = toggle === "on";
-  $: if (false)
+  $: if (browser)
     plain
       ? window.removeEventListener("scroll", noScroll)
       : window.addEventListener("scroll", noScroll);
@@ -28,8 +28,7 @@
 
 <style>
   .toggle {
-    /* position: fixed; */
-    position: absolute;
+    position: fixed;
     top: 1rem;
     right: 1rem;
     font-size: 1rem;
