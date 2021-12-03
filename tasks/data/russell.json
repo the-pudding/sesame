@@ -205,6 +205,15 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
     "sourceSize": { "w": 512, "h": 512 },
     "duration": 100
+   },
+   {
+    "filename": "russell 23.aseprite",
+    "frame": { "x": 512, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 100
    }
  ],
  "meta": {
@@ -218,7 +227,8 @@
    { "name": "walk", "from": 1, "to": 8, "direction": "forward", "color": "#000000ff" },
    { "name": "idle-baby", "from": 9, "to": 13, "direction": "forward", "color": "#000000ff" },
    { "name": "walk-baby", "from": 14, "to": 21, "direction": "forward", "color": "#000000ff" },
-   { "name": "idle-experiment", "from": 22, "to": 22, "direction": "forward", "color": "#000000ff" }
+   { "name": "idle-experiment", "from": 22, "to": 22, "direction": "forward", "color": "#000000ff" },
+   { "name": "idle-speech", "from": 23, "to": 23, "direction": "forward", "color": "#000000ff" }
   ]
  }
 }
