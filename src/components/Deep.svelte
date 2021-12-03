@@ -14,6 +14,7 @@
   $: transform = `--transform: translate3d(${tX}px, -${tY}px, 0);`;
   $: delay = `--delay: ${delay}ms`;
   $: style = `${size} ${transform} ${delay}`;
+  $: text, (visible = false);
 </script>
 
 <button {style} on:click={() => (visible = !visible)} />

@@ -154,6 +154,7 @@
     left: 0;
     top: 0;
     z-index: var(--z-top);
+    pointer-events: none;
   }
 
   .stage:after {
@@ -166,6 +167,7 @@
     right: 0;
     top: 0;
     z-index: var(--z-top);
+    pointer-events: none;
   }
 
   .beats {
