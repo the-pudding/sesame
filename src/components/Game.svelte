@@ -53,6 +53,8 @@
   $: deepY = beats[beatIndex].y;
   $: deepDelay = beats[beatIndex].delay;
   $: deepSize = beats[beatIndex].size;
+  $: deepFront = beats[beatIndex].front;
+
   $: outro = id === "outro";
   $: cues = cueData.filter((d) => d.id === id && d.sprite);
   $: sprites = groups(cues, (d) => d.key);
@@ -83,7 +85,14 @@
     {/each}
 
     {#if deepText}
-      <Deep x={deepX} y={deepY} delay={deepDelay} text={deepText} size={deepSize} />
+      <Deep
+        x={deepX}
+        y={deepY}
+        delay={deepDelay}
+        text={deepText}
+        size={deepSize}
+        front={deepFront}
+      />
     {/if}
   </div>
 

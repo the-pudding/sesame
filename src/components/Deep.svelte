@@ -5,18 +5,19 @@
   export let text;
   export let size = 1;
   export let delay = 0;
+  export let front = false;
 
   let visible = false;
   const { scale, BASE } = getContext("Game");
   $: tX = x * $scale * BASE;
   $: tY = y * $scale * BASE;
-  $: size = `--size: ${$scale * BASE * size}px;`;
-  $: transform = `--transform: translate3d(${tX}px, -${tY}px, 0);`;
-  $: delay = `--delay: ${delay}ms`;
-  $: style = `${size} ${transform} ${delay}`;
+  $: styleSize = `--size: ${$scale * BASE * size}px;`;
+  $: styleTransform = `--transform: translate3d(${tX}px, -${tY}px, 0);`;
+  $: styleDelay = `--delay: ${delay}ms`;
+  $: style = `${styleSize} ${styleTransform} ${styleDelay}`;
 </script>
 
-<button {style} on:click={() => (visible = !visible)} />
+<button class:front {style} on:click={() => (visible = !visible)} />
 
 <div class:visible on:click={() => (visible = false)}>
   <p>{@html text}</p>
@@ -32,6 +33,10 @@
     transform: var(--transform);
     outline: none;
     box-shadow: none;
+  }
+  button.front {
+    z-index: 100;
+    background: rgba(255, 255, 255, 0);
   }
 
   button:before {
