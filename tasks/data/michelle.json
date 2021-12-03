@@ -133,6 +133,15 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
     "sourceSize": { "w": 512, "h": 512 },
     "duration": 100
+   },
+   {
+    "filename": "michelle 15.aseprite",
+    "frame": { "x": 512, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 100
    }
  ],
  "meta": {
@@ -145,7 +154,8 @@
   "frameTags": [
    { "name": "walk", "from": 1, "to": 8, "direction": "forward", "color": "#000000ff" },
    { "name": "wave", "from": 9, "to": 13, "direction": "forward", "color": "#000000ff" },
-   { "name": "idle-experiment", "from": 14, "to": 14, "direction": "forward", "color": "#000000ff" }
+   { "name": "idle-experiment", "from": 14, "to": 14, "direction": "forward", "color": "#000000ff" },
+   { "name": "idle-speech", "from": 15, "to": 15, "direction": "forward", "color": "#000000ff" }
   ]
  }
 }
