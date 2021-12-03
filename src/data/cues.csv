@@ -52,13 +52,13 @@ share,watercooler,,,,bubble,,1800,4,4,,,,,,
 share,russell,,,,walk,,1200,1,3,,,,,,
 share,russell,,,,,,,3,3,,,,,,
 share,michelle,,,,walk,,3000,10,5,,,,,,TRUE
-share,michelle,,,,,,,5,5,,,,,,TRUE
+share,michelle,,,,idle-speech,,,5,5,,,,,,TRUE
 share,peanut,,3000,,dance,,1800,10,7,,,,,,
 share,peanut,,1000,,dance,,,7,7,,,,,,
 share,peanut,,,,dance,,1800,7,10,,,,,,
 label,watercooler,,,,bubble,,,4,4,,,,,,
 label,russell,,,,idle-speech,,,3,3,,,,,,
-label,michelle,,,,idle-speech,,,5,5,,,,,,TRUE
+label,michelle,,,,,,,5,5,,,,,,TRUE
 experiment,russell,,,,idle-experiment,,,3,3,,,,,,
 experiment,michelle,,,,idle-experiment,,,5,5,,,,,,TRUE
 grocery,russell,,,,,,,3,3,,,,,,
