@@ -1,7 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import Icon from "$components/helpers/Icon.svelte";
-  import mq from "$stores/mq.js";
 
   export let debug = false;
   export let enableKeyboard = false;
@@ -47,6 +46,14 @@
       class:full
       disabled={disable.includes(dir)}
     >
+      {#if disable.includes("left")}
+        <div>Start</div>
+      {/if}
+
+      {#if disable.includes("right")}
+        <div>Story</div>
+      {/if}
+
       {#if visibleArrows.includes(dir)}
         <span style="font-size: {arrowSize};"
           ><Icon name="chevron-{dir}" stroke={arrowStroke} strokeWidth={arrowStrokeWidth} /></span
@@ -70,6 +77,8 @@
 
   button {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
     background: none;
     border-radius: 0;
@@ -238,7 +247,19 @@
     opacity: 0.5;
   }
 
-  @media only screen and (min-width: 1024px) {
-    /*  */
+  div {
+    color: var(--color-gray-light);
+    margin-bottom: 10px;
+    position: absolute;
+    top: 40%;
+  }
+  .full:hover div {
+    color: var(--color-gray-dark);
+  }
+
+  @media only screen and (max-width: 1024px) {
+    div {
+      display: none;
+    }
   }
 </style>
