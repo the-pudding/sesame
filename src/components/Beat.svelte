@@ -11,7 +11,7 @@
 </script>
 
 {#key text}
-  <div in:fade={{ delay: 750, duration: 250 }} out:fade={{ duration: 250 }}>
+  <div in:fade={{ delay: 500, duration: 250 }} out:fade={{ duration: 50 }}>
     <p bind:this={el} class:center>{@html text}</p>
   </div>
 {/key}
