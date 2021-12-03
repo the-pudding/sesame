@@ -9,8 +9,10 @@
 
   let visible = false;
   const { scale, BASE } = getContext("Game");
+
   $: tX = x * $scale * BASE;
   $: tY = y * $scale * BASE;
+  $: text, (visible = false);
   $: styleSize = `--size: ${$scale * BASE * size}px;`;
   $: styleTransform = `--transform: translate3d(${tX}px, -${tY}px, 0);`;
   $: styleDelay = `--delay: ${delay}ms`;
