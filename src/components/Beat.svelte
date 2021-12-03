@@ -31,4 +31,28 @@
   p.center {
     text-align: center;
   }
+
+  :global(#game .color-red) {
+    background-color: var(--color-red);
+  }
+
+  :global(#game .color-green) {
+    background-color: var(--color-green);
+  }
+
+  :global(#game .color-pink) {
+    background-color: var(--color-pink);
+  }
+
+  :global(#game .color-peanut) {
+    background-color: var(--color-peanut);
+  }
+
+  :global(#game .color-sesame) {
+    background-color: var(--color-sesame);
+  }
+
+  :global(#game .color-cashew) {
+    background-color: var(--color-cashew);
+  }
 </style>
