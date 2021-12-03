@@ -32,7 +32,6 @@
   $: visibleArrows = directions.filter((d) =>
     typeof showArrows === "boolean" ? showArrows : showArrows.includes(d)
   );
-  $: console.log({ disable });
 </script>
 
 <svelte:window on:keydown={onKeyDown} bind:innerHeight />
