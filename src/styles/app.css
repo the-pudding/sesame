@@ -37,29 +37,5 @@ body {
 
 main {
 	position: relative;
-	font-size: clamp(16px, 2vw, 32px);
-}
-
-.color-red {
-	background-color: var(--color-red);
-}
-
-.color-green {
-	background-color: var(--color-green);
-}
-
-.color-pink {
-	background-color: var(--color-pink);
-}
-
-.color-peanut {
-	background-color: var(--color-peanut);
-}
-
-.color-sesame {
-	background-color: var(--color-sesame);
-}
-
-.color-cashew {
-	background-color: var(--color-cashew);
+	font-size: clamp(20px, 2vw, 32px);
 }

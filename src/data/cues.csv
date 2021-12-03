@@ -2,8 +2,8 @@ id,sprite,dupe,delay,once,cycle,loop,duration,start_x,end_x,start_y,end_y,start_
 byline,russell,,,,walk,,2400,-2,2,,,,,,
 byline,russell,,,,,,,2,2,,,,,,
 byline,michelle,,,,walk,,1800,11,8,,,,,,TRUE
-byline,michelle,,,,wave,,1800,8,8,,,,,,TRUE
-byline,michelle,,,,walk,,1800,8,11,,,,,,
+byline,michelle,,,,wave,,,8,8,,,,,,TRUE
+eat,michelle,,,,walk,,1800,8,11,,,,,,
 eat,russell,,,,walk,,,2,2,,,,,7,
 eat,pizza,,,,,TRUE,3200,11,-2,3,3,,,6,
 eat,boba,,,,,TRUE,3800,12,-2,1.5,1.5,,,5,
@@ -16,7 +16,6 @@ daughter,russell,,,,walk,,3000,2,7,,,,,2,
 daughter,russell,,1000,,walk-baby,,3000,7,2,,,,,2,TRUE
 daughter,russell,,,,idle-baby,,,2,2,,,,,2,
 daughter,hospital-left,,,,,,,5,5,,,,,1,
-daughter,hospital-left,,1200,TRUE,slide,,,5,5,,,,,1,
 daughter,hospital-right,,,,,,,5,5,,,,,3,
 solid,russell,,,,idle-baby,,,2,2,,,,,,
 solid,peanut,,,,dance,,1200,-1,1,,,,,,
@@ -54,6 +53,9 @@ share,russell,,,,walk,,1200,1,3,,,,,,
 share,russell,,,,,,,3,3,,,,,,
 share,michelle,,,,walk,,3600,11,5,,,,,,TRUE
 share,michelle,,,,,,,5,5,,,,,,TRUE
+share,peanut,,3000,,walk,,2400,11,7,,,,,,
+share,peanut,,1000,,walk,,,7,7,,,,,,
+share,peanut,,,,walk,,2400,7,11,,,,,,
 label,watercooler,,,,bubble,,,4,4,,,,,,
 label,russell,,,,idle-speech,,,3,3,,,,,,
 label,michelle,,,,idle-speech,,,5,5,,,,,,TRUE
