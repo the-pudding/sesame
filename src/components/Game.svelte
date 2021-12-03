@@ -6,6 +6,7 @@
   import { groups, format } from "d3";
   import viewport from "$stores/viewport.js";
   import Sprite from "$components/Sprite.svelte";
+  import Deep from "$components/Deep.svelte";
   import Beat from "$components/Beat.svelte";
   import Tap from "$components/helpers/Tap.svelte";
   import cueData from "$data/cues.js";
@@ -44,7 +45,11 @@
 
   $: id = beats[beatIndex].id;
   $: text = beats[beatIndex].text;
-  $: deep = beats[beatIndex].deep;
+  $: deepText = beats[beatIndex].deep;
+  $: deepX = beats[beatIndex].x;
+  $: deepY = beats[beatIndex].y;
+  $: deepDelay = beats[beatIndex].delay;
+  $: deepSize = beats[beatIndex].size;
   $: outro = id === "outro";
   $: cues = cueData.filter((d) => d.id === id && d.sprite);
   $: sprites = groups(cues, (d) => d.key);
@@ -73,6 +78,10 @@
         <Sprite {id} {steps} name={key.split("_")[0]} data={getSpriteData(key)} />
       </div>
     {/each}
+
+    {#if deepText}
+      <Deep x={deepX} y={deepY} delay={deepDelay} text={deepText} size={deepSize} />
+    {/if}
   </div>
 
   <div class="beats">
@@ -83,7 +92,7 @@
         </div>
       {/each}
     {:else}
-      <Beat {text} {deep} />
+      <Beat {text} />
     {/if}
   </div>
 

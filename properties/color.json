@@ -21,11 +21,8 @@
 		"white": {
 			"value": "#ffffff"
 		},
-		"purple": {
-			"value": "#a239ca"
-		},
-		"blue": {
-			"value": "#4717f6"
+		"red": {
+			"value": "#ff0044"
 		},
 		"green": {
 			"value": "#63c74d"

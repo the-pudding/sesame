@@ -40,6 +40,10 @@ main {
 	font-size: clamp(18px, 2vw, 32px);
 }
 
+.color-red {
+	background-color: var(--color-red);
+}
+
 .color-green {
 	background-color: var(--color-green);
 }
