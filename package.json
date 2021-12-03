@@ -5,7 +5,7 @@
 		"gdoc": "node tasks/fetch-google.cjs",
 		"style": "node tasks/style-dictionary.cjs",
 		"sprite": "node tasks/sprite-data.cjs",
-		"dev": "svelte-kit dev",
+		"dev": "svelte-kit dev --host",
 		"build": "svelte-kit build",
 		"start": "svelte-kit start",
 		"lint": "prettier --check .",

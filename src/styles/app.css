@@ -37,7 +37,7 @@ body {
 
 main {
 	position: relative;
-	font-size: clamp(18px, 2vw, 32px);
+	font-size: clamp(16px, 2vw, 32px);
 }
 
 .color-red {

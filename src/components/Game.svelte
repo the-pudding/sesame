@@ -56,7 +56,7 @@
   $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px;`;
   $: tapWidth = format(".1%")(($viewport.width - UNITS_X * $scale * BASE) / 2 / $viewport.width);
   $: disable = beatIndex === 0 ? ["left"] : beatIndex === beats.length - 1 ? ["right"] : [];
-  $: if (browser)
+  $: if (false)
     outro
       ? window.removeEventListener("scroll", noScroll)
       : window.addEventListener("scroll", noScroll);
@@ -114,7 +114,9 @@
     display: none;
     flex-direction: column;
     padding-top: 3em;
+    padding-top: 6em;
     overflow: hidden;
+    height: auto !important;
     /* background: pink; */
   }
 
@@ -134,6 +136,7 @@
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
     overflow: hidden;
+    outline: 2px solid green;
   }
 
   .stage:before {
