@@ -9,6 +9,7 @@
   import Deep from "$components/Deep.svelte";
   import Beat from "$components/Beat.svelte";
   import Tap from "$components/helpers/Tap.svelte";
+  import Footer from "$components/Footer.svelte";
   import cueData from "$data/cues.js";
   import spriteData from "$data/sprites.json";
   import noScroll from "$utils/noScroll.js";
@@ -88,11 +89,20 @@
 
   <div class="beats">
     {#if outro}
-      {#each copy.outro as { value }}
+      {#each copy.outro as { type, value }}
         <div class="beat">
-          <p>{@html value}</p>
+          {#if type === "list"}
+            <ul>
+              {#each value as v}
+                <li>{@html v}</li>
+              {/each}
+            </ul>
+          {:else}
+            <p>{@html value}</p>
+          {/if}
         </div>
       {/each}
+      <Footer />
     {:else}
       <Beat {text} />
     {/if}
@@ -174,10 +184,19 @@
     flex: 1;
   }
 
-  .beats p {
+  .beats p,
+  .beats ul {
     max-width: 30em;
     padding: 1em;
     margin: 0 auto;
+  }
+
+  .beats ul {
+    padding-left: 2em;
+  }
+
+  .beats li {
+    margin-bottom: 1em;
   }
 
   select {

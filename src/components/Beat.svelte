@@ -22,7 +22,6 @@
   }
 
   p {
-    /* outline: 2px dashed purple; */
     max-width: 30em;
     padding: 1em;
     margin: 0 auto;
