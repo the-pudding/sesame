@@ -48,12 +48,7 @@
 
   $: id = beats[beatIndex].id;
   $: text = beats[beatIndex].text;
-  $: deepText = beats[beatIndex].deep;
-  $: deepX = beats[beatIndex].x;
-  $: deepY = beats[beatIndex].y;
-  $: deepDelay = beats[beatIndex].delay;
-  $: deepSize = beats[beatIndex].size;
-  $: deepFront = beats[beatIndex].front;
+  $: deep = { ...beats[beatIndex] };
 
   $: outro = id === "outro";
   $: cues = cueData.filter((d) => d.id === id && d.sprite);
@@ -79,20 +74,15 @@
 <div id="game" class:visible class:outro style="height: {$viewport.height + 1}px;">
   <div class="stage" {style}>
     {#each sprites as [key, steps] (key)}
-      <div in:fade={{ duration: 200 }} out:fade={{ duration: 1 }}>
+      <div in:fade={{ duration: 1 }} out:fade={{ duration: 1 }}>
         <Sprite {id} {steps} name={key.split("_")[0]} data={getSpriteData(key)} />
       </div>
     {/each}
 
-    {#if deepText}
-      <Deep
-        x={deepX}
-        y={deepY}
-        delay={deepDelay}
-        text={deepText}
-        size={deepSize}
-        front={deepFront}
-      />
+    {#if deep.deep}
+      {#key deep.deep}
+        <Deep {...deep} />
+      {/key}
     {/if}
   </div>
 
@@ -168,7 +158,7 @@
 
   .stage:after {
     content: "";
-    background-image: linear-gradient(left, rgba(0, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    background-image: linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
     display: block;
     width: calc(var(--scale) * var(--base));
     height: 100%;

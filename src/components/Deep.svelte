@@ -2,7 +2,7 @@
   import { getContext } from "svelte";
   export let x;
   export let y;
-  export let text;
+  export let deep;
   export let size = 1;
   export let delay = 0;
   export let front = false;
@@ -12,7 +12,7 @@
 
   $: tX = x * $scale * BASE;
   $: tY = y * $scale * BASE;
-  $: text, (visible = false);
+  $: deep, (visible = false);
   $: styleSize = `--size: ${$scale * BASE * size}px;`;
   $: styleTransform = `--transform: translate3d(${tX}px, -${tY}px, 0);`;
   $: styleDelay = `--delay: ${delay}ms`;
@@ -22,7 +22,7 @@
 <button class:front {style} on:click={() => (visible = !visible)} />
 
 <div class:visible on:click={() => (visible = false)}>
-  <p>{@html text}</p>
+  <p>{@html deep}</p>
 </div>
 
 <style>
@@ -59,10 +59,10 @@
 
   @keyframes pulse {
     0% {
-      opacity: 0.5;
-      transform: translate(-50%, -50%) scale(0.33);
+      opacity: 0.75;
+      transform: translate(-50%, -50%) scale(0.2);
     }
-    80%,
+    50%,
     100% {
       transform: translate(-50%, -50%) scale(1);
       opacity: 0;
@@ -71,8 +71,6 @@
 
   div {
     position: absolute;
-    top: 0;
-    left: 0;
     background: rgba(255, 255, 255, 0.8);
     padding: 1em;
     z-index: var(--z-top);
@@ -80,11 +78,15 @@
     height: 100%;
     opacity: 0;
     pointer-events: none;
+    display: flex;
+    align-items: center;
+    transition: all 250ms ease-in-out;
   }
 
   div.visible {
     opacity: 1;
     pointer-events: auto;
+    cursor: pointer;
   }
 
   p {
@@ -93,5 +95,14 @@
     margin: 0 auto;
     background: var(--color-gray-light);
     padding: 1em;
+    transform: translate(0, -50%);
+    opacity: 0;
+    transition: all 250ms 250ms ease-in-out;
+    box-shadow: 0 0 0 4px var(--color-gray-dark);
+  }
+
+  div.visible p {
+    transform: translate(0, 0);
+    opacity: 0.8;
   }
 </style>

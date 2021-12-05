@@ -40,8 +40,18 @@
     background-color: var(--color-green);
   }
 
+  :global(#game .color-green-dark) {
+    background-color: var(--color-green-dark);
+    color: var(--color-bg);
+  }
+
   :global(#game .color-pink) {
     background-color: var(--color-pink);
+  }
+
+  :global(#game .color-pink-dark) {
+    background-color: var(--color-pink-dark);
+    color: var(--color-bg);
   }
 
   :global(#game .color-peanut) {

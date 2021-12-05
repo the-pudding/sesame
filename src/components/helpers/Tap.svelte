@@ -47,11 +47,11 @@
       disabled={disable.includes(dir)}
     >
       {#if disable.includes("left")}
-        <div>Start</div>
+        <span class="label">Start</span>
       {/if}
 
       {#if disable.includes("right")}
-        <div>Story</div>
+        <span class="label">Story</span>
       {/if}
 
       {#if visibleArrows.includes(dir)}
@@ -247,18 +247,20 @@
     opacity: 0.5;
   }
 
-  div {
-    color: var(--color-gray-light);
-    margin-bottom: 10px;
-    position: absolute;
-    top: 40%;
-  }
-  .full:hover div {
+  button .label {
     color: var(--color-gray-dark);
+    text-transform: uppercase;
+    font-size: 0.75em;
+    opacity: 0.75;
+  }
+
+  .full:hover .label {
+    transform: none;
+    opacity: 1;
   }
 
   @media only screen and (max-width: 1024px) {
-    div {
+    .label {
       display: none;
     }
   }
