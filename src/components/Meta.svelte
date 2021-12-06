@@ -11,7 +11,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="description" content={description} />
   <meta name="author" content="The Pudding" />
-  <meta name="news_keywords" content="" />
+  <meta name="news_keywords" content="allergies, sesame, falcpa" />
 
   <meta property="og:title" content={title} />
   <meta property="og:site_name" content="The Pudding" />
@@ -37,14 +37,14 @@
   <link rel="canonical" href="{url}/" />
   <link
     rel="preload"
-    href="https://pudding.cool/assets/fonts/atkinson/atkinson-hyperlegible-v1-latin-400.woff2"
+    href="https://pudding.cool/assets/fonts/cozette/CozetteVector.woff2"
     as="font"
     type="font/woff2"
     crossorigin
   />
   <link
     rel="preload"
-    href="https://pudding.cool/assets/fonts/atkinson/atkinson-hyperlegible-v1-latin-700.woff2"
+    href="https://pudding.cool/assets/fonts/atkinson/atkinson-hyperlegible-v1-latin-400.woff2"
     as="font"
     type="font/woff2"
     crossorigin

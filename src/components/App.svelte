@@ -1,6 +1,7 @@
 <script>
   import { browser } from "$app/env";
   import { setContext } from "svelte";
+  import Meta from "$components/Meta.svelte";
   import Toggle from "$components/helpers/Toggle.svelte";
   import Plain from "$components/Plain.svelte";
   import Game from "$components/Game.svelte";
@@ -17,6 +18,8 @@
       ? window.removeEventListener("scroll", noScroll)
       : window.addEventListener("scroll", noScroll);
 </script>
+
+<Meta title={copy.title} description={copy.description} url={copy.url} />
 
 <Plain visible={plain} />
 
