@@ -107,7 +107,7 @@
   $: y = `${Math.round($tween.y * $scale * BASE * -1)}px`;
   $: s = flip ? -1 : 1;
 
-  $: bgImage = `${base}/assets/sprites/${name}@2x.png`;
+  $: bgImage = `${base}/assets/sprites/${name}.png`;
   $: bgPos = `${$scale * frame.x * -1}px ${$scale * frame.y * -1}px`;
   $: bgSize = `calc(100% * ${data.cols}) calc(100% * ${data.rows})`;
   $: transform = `translate3d(${x}, ${y}, 0) scaleX(${s})`;

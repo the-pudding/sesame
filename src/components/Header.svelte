@@ -4,28 +4,33 @@
 
 <header>
   <div class="wordmark">
-    <a href="https://pudding.cool" aria-label="The Pudding">{@html wordmark}</a>
+    <a href="https://pudding.cool">The Pudding</a>
   </div>
 </header>
 
 <style>
+  header {
+    position: relative;
+    z-index: calc(var(--z-overlay) + 1);
+  }
   .wordmark {
     position: relative;
-    max-width: 12rem;
     margin: 0;
-    padding: 1rem;
-    z-index: var(--z-overlay);
+    font-size: 1.75rem;
     /* transform-origin: 0 50%; */
     /* transform: rotate(-90deg) translate(-100%, 2em); */
   }
 
   .wordmark a {
-    border: none;
+    display: inline-block;
+    background: none;
+    text-decoration: none;
     color: var(--color-fg);
+    padding: 1rem;
   }
 
   .wordmark a:hover {
-    background-color: transparent;
+    background-color: var(--color-peanut);
   }
 
   :global(.wordmark svg path) {

@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte";
-  import wordmark from "$svg/wordmark.svg";
 
   let localURL;
   let stories = [];
@@ -56,9 +55,6 @@
   </section>
 
   <section class="about">
-    <div class="wordmark">
-      {@html wordmark}
-    </div>
     <p>
       <a href="https://pudding.cool">The Pudding</a>
       is a digital publication that explains ideas debated in culture with visual essays.
@@ -99,7 +95,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: 70em;
+    max-width: 50em;
   }
 
   .story {
@@ -163,7 +159,7 @@
 
   @media only screen and (min-width: 50em) {
     .story {
-      width: 25%;
+      width: 30%;
       padding: 0 1em;
     }
   }

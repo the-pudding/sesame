@@ -59,8 +59,8 @@ share,peanut,,,,dance,,1800,7,10,,,,,,
 label,watercooler,,,,bubble,,,4,4,,,,,,
 label,russell,,,,idle-speech,,,3,3,,,,,,
 label,michelle,,,,,,,5,5,,,,,,TRUE
-experiment,russell,,,,idle-experiment,,,3,3,,,,,,
-experiment,michelle,,,,idle-experiment,,,5,5,,,,,,TRUE
+experiment,russell,,,TRUE,idle-experiment,,,3,3,,,,,,
+experiment,michelle,,,TRUE,idle-experiment,,,5,5,,,,,,TRUE
 grocery,russell,,,,,,,3,3,,,,,,
 grocery,daughter,,,,walk,,4800,-1,3,,,,,,
 grocery,daughter,,,,,,,3,3,,,,,,

@@ -1,10 +1,19 @@
 <script>
   import { getContext } from "svelte";
+  import Footer from "$components/Footer.svelte";
+
   const { copy } = getContext("App");
   export let visible;
 </script>
 
 <article class:visible>
+  <div class="beat">
+    <h1>{copy.title}</h1>
+    <p>
+      By <a href="https://pudding.cool/author/russell-goldenberg">Russell Goldenberg</a> and
+      <a href="https://pudding.cool/author/michelle-mcghee">Michelle McGhee</a>
+    </p>
+  </div>
   {#each copy.scenes as { scene, setting, beats }}
     <section id={scene}>
       {#if scene === "outro"}
@@ -24,7 +33,7 @@
             {#if deep}
               <details>
                 <summary>More Info</summary>
-                <p>{deep}</p>
+                <p>{@html deep}</p>
               </details>
             {/if}
           </div>
@@ -33,6 +42,9 @@
     </section>
   {/each}
 </article>
+{#if visible}
+  <Footer />
+{/if}
 
 <style>
   article {
@@ -40,6 +52,7 @@
     max-width: 25em;
     margin: 0 auto;
     padding: 1em;
+    font-family: var(--sans);
   }
 
   article.visible {
@@ -56,9 +69,5 @@
 
   .beat {
     margin-bottom: 2em;
-  }
-
-  small {
-    color: var(--color-gray-medium);
   }
 </style>

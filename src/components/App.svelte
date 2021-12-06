@@ -32,7 +32,6 @@
     top: 1rem;
     right: 1rem;
     font-size: 1rem;
-    max-width: 6rem;
-    z-index: var(--z-overlay);
+    z-index: calc(var(--z-overlay) + 1);
   }
 </style>
