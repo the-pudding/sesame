@@ -18,7 +18,9 @@
     "white": "#ffffff",
     "red": "#ff0044",
     "green": "#63c74d",
+    "green-dark": "#265c42",
     "pink": "#f6757a",
+    "pink-dark": "#b55088",
     "peanut": "#fee761",
     "cashew": "#ead4aa",
     "sesame": "#e4a672"

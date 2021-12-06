@@ -27,8 +27,14 @@
 		"green": {
 			"value": "#63c74d"
 		},
+		"green-dark": {
+			"value": "#265c42"
+		},
 		"pink": {
 			"value": "#f6757a"
+		},
+		"pink-dark": {
+			"value": "#b55088"
 		},
 		"peanut": {
 			"value": "#fee761"

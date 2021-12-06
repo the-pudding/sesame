@@ -31,7 +31,6 @@
   .label {
     font-family: inherit;
     font-size: 1em;
-    margin-right: 0.5em;
   }
 
   .toggle--inner [role="switch"][aria-checked="true"] :first-child,
@@ -43,6 +42,7 @@
   }
 
   .toggle--inner button {
+    margin-left: 0.5em;
     padding: 0.25em;
     background-color: var(--color-white);
     border: 2px solid var(--color-off-black);
@@ -66,10 +66,7 @@
   }
 
   .toggle--slider button {
-    width: 3.5em;
-    height: 2em;
     position: relative;
-    margin-left: 0.5em;
     background: var(--color-gray-light);
   }
 

@@ -12,9 +12,6 @@
   const { scale, BASE } = getContext("Game");
   const FRAMERATE = 100;
 
-  const path = `${base}/assets/sprites/${name}.png`;
-  const src = `--src: url(${path});`;
-
   let tween = tweened({ x: 10, y: 0, r: 0 });
   let cycleInterval;
   let frameIndex = 0;
@@ -108,17 +105,15 @@
 
   $: x = `${Math.round($tween.x * $scale * BASE)}px`;
   $: y = `${Math.round($tween.y * $scale * BASE * -1)}px`;
-  $: r = `${$tween.r * $scale}deg`;
   $: s = flip ? -1 : 1;
 
-  $: transform = `--transform: translate3d(${x}, ${y}, 0) rotate(${r}) scaleX(${s});`;
-  $: pos = `--pos: ${$scale * frame.x * -1}px ${$scale * frame.y * -1}px;`;
-  $: size = `--size: ${data.size * $scale}px;`;
-  $: zIndex = `--z-index: ${z || 1};`;
-  $: cols = `--cols: ${data.cols};`;
-  $: rows = `--rows: ${data.rows};`;
-
-  $: style = `${src} ${size} ${pos} ${transform} ${zIndex} ${rows} ${cols}`;
+  $: bgImage = `${base}/assets/sprites/${name}.png`;
+  $: bgPos = `${$scale * frame.x * -1}px ${$scale * frame.y * -1}px`;
+  $: bgSize = `calc(100% * ${data.cols}) calc(100% * ${data.rows})`;
+  $: transform = `translate3d(${x}, ${y}, 0) scaleX(${s})`;
+  $: width = `${data.size * $scale}px`;
+  $: height = `${data.size * $scale}px`;
+  $: zIndex = z || 1;
 
   onMount(() => {
     return () => {
@@ -127,7 +122,16 @@
   });
 </script>
 
-<div {style} />
+<div
+  style="
+			background-image: url({bgImage});
+			background-position: {bgPos};
+  		background-size: {bgSize};
+  		transform: {transform};
+  		width: {width};
+  		height: {height};
+  		z-index: {zIndex};"
+/>
 
 <style>
   div {
@@ -135,14 +139,7 @@
     bottom: 0;
     left: 0;
     transform-origin: 50% 50%;
-    transform: var(--transform);
-    background: var(--src);
     background-repeat: no-repeat;
-    background-position: var(--pos);
-    background-size: calc(100% * var(--cols)) calc(100% * var(--rows));
-    width: var(--size);
-    height: var(--size);
-    z-index: var(--z-index);
     will-change: transform;
     pointer-events: none;
   }

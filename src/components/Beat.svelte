@@ -22,7 +22,6 @@
   }
 
   p {
-    /* outline: 2px dashed purple; */
     max-width: 30em;
     padding: 1em;
     margin: 0 auto;
@@ -30,6 +29,24 @@
 
   p.center {
     text-align: center;
+  }
+
+  :global(span.note) {
+    font-size: 0.75em;
+    display: block;
+    font-style: italic;
+    margin-top: 1em;
+    opacity: 0;
+    animation: appear 250ms 6s linear forwards;
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   :global(#game .color-red) {
@@ -40,8 +57,18 @@
     background-color: var(--color-green);
   }
 
+  :global(#game .color-green-dark) {
+    background-color: var(--color-green-dark);
+    color: var(--color-bg);
+  }
+
   :global(#game .color-pink) {
     background-color: var(--color-pink);
+  }
+
+  :global(#game .color-pink-dark) {
+    background-color: var(--color-pink-dark);
+    color: var(--color-bg);
   }
 
   :global(#game .color-peanut) {

@@ -17,8 +17,8 @@
 
 	/* presets */
 	--border-radius: 0px;
-	--font-body: var(--sans);
-	--font-form: var(--sans);
+	--font-body: var(--mono);
+	--font-form: var(--mono);
 	--color-bg: var(--color-white);
 	--color-fg: var(--color-off-black);
 	--color-placeholder: var(--color-gray-dark);
@@ -38,4 +38,32 @@ body {
 main {
 	position: relative;
 	font-size: clamp(20px, 2vw, 32px);
+}
+
+a {
+	background-image: linear-gradient(currentColor, currentColor);
+	background-position: 0 90%;
+	background-size: 100% 0.1em;
+	background-repeat: no-repeat;
+	text-decoration: none;
+}
+
+a:hover {
+	background-image: linear-gradient(var(--color-peanut), var(--color-peanut));
+	background-position: 0 0;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+h1 {
+	line-height: 1.2;
+}
+
+summary {
+	cursor: pointer;
+}
+
+details p {
+	font-size: 0.75em;
+	padding: 0 1.25em;
 }
