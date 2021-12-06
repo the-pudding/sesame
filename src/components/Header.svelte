@@ -17,8 +17,6 @@
     position: relative;
     margin: 0;
     font-size: 1.75rem;
-    /* transform-origin: 0 50%; */
-    /* transform: rotate(-90deg) translate(-100%, 2em); */
   }
 
   .wordmark a {
@@ -31,10 +29,6 @@
 
   .wordmark a:hover {
     background-color: var(--color-peanut);
-  }
-
-  :global(.wordmark svg path) {
-    fill: currentColor;
   }
 
   @media only screen and (min-width: 960px) {
