@@ -121,11 +121,6 @@
     line-height: 1.2;
   }
 
-  .wordmark {
-    max-width: 10em;
-    margin: 1em auto;
-  }
-
   .about {
     margin: 3rem auto;
     margin-top: 0;

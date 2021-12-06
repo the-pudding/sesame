@@ -13,6 +13,7 @@
     position: relative;
     z-index: calc(var(--z-overlay) + 1);
   }
+
   .wordmark {
     position: relative;
     margin: 0;
