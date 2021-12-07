@@ -124,8 +124,8 @@
     full={!mobile}
     showArrows={true}
     enableKeyboard={true}
-    size={mobile ? "10vw" : tapWidth}
-    arrowSize={"5vw"}
+    size={mobile ? "12vw" : tapWidth}
+    arrowSize={mobile ? "8vw" : "5vw"}
     arrowPosition={mobile ? "end" : "center"}
     arrowStroke={variables.color["gray-dark"]}
     on:tap={onTap}
@@ -136,7 +136,7 @@
   #game {
     display: none;
     flex-direction: column;
-    padding-top: 3em;
+    padding-top: 4em;
     overflow: hidden;
     /* background: pink; */
   }
@@ -200,6 +200,7 @@
   .beats div {
     max-width: 30em;
     margin: 0 auto;
+    padding: 0 1em;
   }
 
   .beats ul {

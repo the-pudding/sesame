@@ -22,7 +22,7 @@
 <style>
   div {
     height: 100%;
-    margin-top: 1em;
+    margin-top: 0.5em;
   }
 
   p {
@@ -85,5 +85,11 @@
 
   :global(#game .color-cashew) {
     background-color: var(--color-cashew);
+  }
+
+  @media only screen and (min-width: 1024px) {
+    div {
+      margin-top: 1em;
+    }
   }
 </style>

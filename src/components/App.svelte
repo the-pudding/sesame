@@ -32,12 +32,12 @@
 <style>
   .toggle {
     position: fixed;
-    top: 1.25rem;
-    right: 1rem;
+    top: 0.5rem;
+    right: 0.5rem;
     font-size: 1rem;
-    width: 7em;
     z-index: calc(var(--z-overlay) + 1);
     text-align: center;
+    background: var(--color-bg);
   }
 
   @media only screen and (min-width: 640px) {

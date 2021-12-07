@@ -36,7 +36,7 @@
 
 <svelte:window on:keydown={onKeyDown} bind:innerHeight />
 
-<section class:debug style="height: {innerHeight}px;">
+<section class="tap" class:debug style="height: {innerHeight}px;">
   {#each directions as dir}
     <button
       on:click={dispatch("tap", dir)}
@@ -259,9 +259,16 @@
     opacity: 1;
   }
 
+  :global(.tap span svg) {
+    vertical-align: middle;
+  }
+
   @media only screen and (max-width: 1024px) {
-    .label {
-      display: none;
+    button .label {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -100%);
     }
   }
 </style>

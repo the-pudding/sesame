@@ -10,8 +10,13 @@
 
 <style>
   header {
-    position: relative;
+    position: fixed;
     z-index: calc(var(--z-overlay) + 1);
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: var(--color-bg);
+    box-shadow: 0 0 2px 1px var(--color-gray-light);
   }
 
   .wordmark {
@@ -25,7 +30,7 @@
     background: none;
     text-decoration: none;
     color: var(--color-fg);
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   .wordmark a:hover {
@@ -33,13 +38,6 @@
   }
 
   @media only screen and (min-width: 960px) {
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-    }
-
     .wordmark {
       font-size: 1.75rem;
     }

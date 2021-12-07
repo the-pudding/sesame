@@ -67,7 +67,7 @@
   article {
     display: none;
     max-width: 25em;
-    margin: 0 auto;
+    margin: 2em auto;
     padding: 1em;
     font-family: var(--sans);
   }
