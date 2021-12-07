@@ -17,7 +17,7 @@
   .wordmark {
     position: relative;
     margin: 0;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   .wordmark a {
@@ -38,6 +38,10 @@
       top: 0;
       left: 0;
       width: 100%;
+    }
+
+    .wordmark {
+      font-size: 1.75rem;
     }
   }
 </style>

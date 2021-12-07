@@ -42,10 +42,15 @@
   }
 
   .toggle--inner button {
-    margin-left: 0.5em;
     padding: 0.25em;
     background-color: var(--color-white);
     border: 2px solid var(--color-off-black);
+  }
+
+  @media only screen and (min-width: 640px) {
+    .toggle--inner button {
+      margin-left: 0.5em;
+    }
   }
 
   .toggle--inner button span {

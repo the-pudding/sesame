@@ -1,13 +1,16 @@
 <script>
   import { getContext } from "svelte";
   import { fade } from "svelte/transition";
+  import mq from "$stores/mq.js";
 
   export let text;
 
   let el;
   let center = false;
 
-  $: if (el) center = el.innerText.length < 60;
+  $: mobile = !$mq.lg;
+  $: len = mobile ? 20 : 60;
+  $: if (el) center = el.innerText.length < len;
 </script>
 
 {#key text}
