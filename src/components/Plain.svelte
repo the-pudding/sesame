@@ -17,10 +17,18 @@
   {#each copy.scenes as { scene, setting, beats }}
     <section id={scene}>
       {#if scene === "outro"}
-        {#each copy.outro as { value }}
-          <div class="beat">
-            <p>{@html value}</p>
-          </div>
+        {#each copy.outro as { type, value }}
+          {#if type === "list"}
+            <ul class="beat">
+              {#each value as listItem}
+                <li>{@html listItem}</li>
+              {/each}
+            </ul>
+          {:else}
+            <div class="beat">
+              <p>{@html value}</p>
+            </div>
+          {/if}
         {/each}
       {:else}
         {#each beats.filter((d) => !d.hide) as { text, alt, deep }}
