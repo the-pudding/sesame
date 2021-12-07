@@ -42,7 +42,7 @@
   const getSpriteData = (key) => spriteData.find((d) => d.id === key.split("_")[0]);
 
   $: mobile = !$mq.lg;
-  $: stageScale = mobile ? 1 : 0.9;
+  $: stageScale = mobile ? 1 : !mobile && $viewport.height < 800 ? 0.75 : 0.9;
   $: scale.set(Math.min(MAX_SCALE, ($viewport.width * stageScale) / SIZE));
   $: margin = Math.ceil(($viewport.width - $scale * BASE * UNITS_X) / 2);
   $: setContext("Game", { scale, BASE });
