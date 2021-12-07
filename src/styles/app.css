@@ -67,3 +67,15 @@ details p {
   font-size: 0.75em;
   padding: 0 1.25em;
 }
+
+a[rel="external"]:after {
+	color: red;
+	content: "";
+	display:inline-block;
+	background-image: url("assets/images/external-link.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 0.75em;
+	height: 0.75em;
+	margin-left: 0.25em;
+}

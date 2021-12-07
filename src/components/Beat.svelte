@@ -37,7 +37,7 @@
     font-style: italic;
     margin-top: 1em;
     opacity: 0;
-    animation: appear 250ms 6s linear forwards;
+    animation: appear 250ms 3.6s linear forwards;
   }
 
   @keyframes appear {
