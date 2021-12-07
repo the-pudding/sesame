@@ -49,6 +49,15 @@
       {/if}
     </section>
   {/each}
+
+  <div class="beat">
+    <details>
+      <summary>Data and Methods</summary>
+      {#each copy.method as { value }}
+        <p>{@html value}</p>
+      {/each}
+    </details>
+  </div>
 </article>
 {#if visible}
   <Footer />

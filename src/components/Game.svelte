@@ -102,6 +102,14 @@
           {/if}
         </div>
       {/each}
+      <div class="beat">
+        <details>
+          <summary>Data and Methods</summary>
+          {#each copy.method as { value }}
+            <p>{@html value}</p>
+          {/each}
+        </details>
+      </div>
       <Footer />
     {:else}
       <Beat {text} />
@@ -184,10 +192,8 @@
     flex: 1;
   }
 
-  .beats p,
-  .beats ul {
+  .beats div {
     max-width: 30em;
-    padding: 1em;
     margin: 0 auto;
   }
 
@@ -197,6 +203,10 @@
 
   .beats li {
     margin-bottom: 1em;
+  }
+
+  .beats p {
+    margin: 1.5em 0;
   }
 
   select {
