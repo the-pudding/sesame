@@ -264,11 +264,25 @@
   }
 
   @media only screen and (max-width: 1024px) {
+    button {
+      outline: 4px solid var(--color-bg);
+    }
+
+    button::before {
+      opacity: 1;
+    }
+
     button .label {
+      background: var(--color-bg);
       position: absolute;
       top: 0;
       left: 50%;
       transform: translate(-50%, -100%);
+      width: 100%;
+      padding: 0.25em 0;
+      display: inline-block;
+      opacity: 1;
+      /* outline: 4px solid var(--color-bg); */
     }
   }
 </style>
