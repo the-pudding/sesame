@@ -49,8 +49,8 @@
 
   $: id = beats[beatIndex].id;
   $: text = beats[beatIndex].text;
-  $: tx = beats[beatIndex].tx || 0;
-  $: ts = beats[beatIndex].ts || 1;
+  $: tx = mobile ? beats[beatIndex].tx || 0 : 0;
+  $: ts = mobile ? beats[beatIndex].ts || 1.3 : 1;
   $: deep = { ...beats[beatIndex] };
 
   $: outro = id === "outro";
@@ -136,7 +136,7 @@
   #game {
     display: none;
     flex-direction: column;
-    padding-top: 4em;
+    padding-top: 10em;
     overflow: hidden;
     /* background: pink; */
   }
@@ -157,9 +157,9 @@
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
     overflow: hidden;
-    /* transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
     transform-origin: 50% 100%;
-    transform: translate(calc(var(--scale) * var(--tX) * var(--base))) scale(var(--tS)); */
+    transform: translateX(calc(var(--scale) * var(--tX) * var(--base))) scale(var(--tS));
   }
 
   .stage:before {
@@ -221,5 +221,12 @@
     position: absolute;
     z-index: 10000000;
     display: none;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .stage:before,
+    .stage:after {
+      display: none;
+    }
   }
 </style>
