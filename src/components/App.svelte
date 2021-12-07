@@ -46,4 +46,15 @@
       text-align: left;
     }
   }
+
+  :global(a[rel="external"]:after) {
+    content: "";
+    display: inline-block;
+    background-image: var(--external);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 0.75em;
+    height: 0.75em;
+    margin-left: 0.25em;
+  }
 </style>
