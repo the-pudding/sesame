@@ -9,7 +9,7 @@
   let center = false;
 
   $: mobile = !$mq.lg;
-  $: len = mobile ? 20 : 60;
+  $: len = mobile ? 15 : 60;
   $: if (el) center = el.innerText.length < len;
 </script>
 
@@ -22,6 +22,7 @@
 <style>
   div {
     height: 100%;
+    margin-top: 1em;
   }
 
   p {
