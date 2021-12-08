@@ -27,6 +27,7 @@
   const SIZE = BASE * UNITS_X;
   const MAX_SCALE = 4;
 
+  let deepMode = false;
   let beatIndex = 0;
   let scale = writable();
 
@@ -70,17 +71,19 @@
   });
 </script>
 
-<div id="game" class:visible class:outro style="height: {$viewport.height + 1}px;">
-  <div class="stage" {style}>
+<div id="game" class:visible class:outro style="{style} height: {$viewport.height + 1}px;">
+  <div class="stage" class:deepMode>
     {#each sprites as [key, steps] (key)}
       <div in:fade={{ duration: 1 }} out:fade={{ duration: 1 }}>
         <Sprite {id} {steps} name={key.split("_")[0]} data={getSpriteData(key)} />
       </div>
     {/each}
+  </div>
 
+  <div class="deep-container">
     {#if deep.deep}
       {#key deep.deep}
-        <Deep {...deep} stageScale={ts} />
+        <Deep {...deep} bind:visible={deepMode} />
       {/key}
     {/if}
   </div>
@@ -132,7 +135,6 @@
   #game {
     display: none;
     flex-direction: column;
-    padding-top: 4em;
     overflow: hidden;
   }
 
@@ -144,6 +146,18 @@
     height: auto !important;
   }
 
+  .deep-container {
+    position: absolute;
+    min-width: calc(var(--unitsX) * var(--scale) * var(--base));
+    min-height: calc(var(--unitsY) * var(--scale) * var(--base));
+    width: calc(var(--unitsX) * var(--scale) * var(--base));
+    height: calc(var(--unitsY) * var(--scale) * var(--base));
+    margin: 0 auto;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .stage {
     position: relative;
     min-width: calc(var(--unitsX) * var(--scale) * var(--base));
@@ -152,9 +166,13 @@
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
     overflow: hidden;
-    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, opacity 250ms ease-in-out;
     transform-origin: 50% 100%;
     transform: translateX(calc(var(--scale) * var(--tX) * var(--base))) scale(var(--tS));
+  }
+
+  .stage.deepMode {
+    opacity: 0.2;
   }
 
   .stage:before {
@@ -187,6 +205,11 @@
     pointer-events: none;
   }
 
+  .stage,
+  .deep-container {
+    margin-top: 4em;
+  }
+
   .beats {
     position: relative;
     flex: 1;
@@ -211,8 +234,9 @@
   }
 
   @media only screen and (max-width: 1024px) {
-    #game {
-      padding-top: 10em;
+    .stage,
+    .deep-container {
+      margin-top: 10em;
     }
 
     .stage:before,

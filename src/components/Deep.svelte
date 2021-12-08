@@ -1,36 +1,50 @@
 <script>
   import { getContext } from "svelte";
-  import mq from "$stores/mq.js";
+  import Icon from "$components/helpers/Icon.svelte";
 
   export let x;
   export let y;
   export let deep;
   export let delay = 0;
   export let front = false;
-  export let stageScale = 1;
+  export let visible = false;
 
-  let visible = false;
   const { scale, BASE } = getContext("Game");
 
-  $: mobile = !$mq.lg;
   $: tX = Math.round(x * $scale * BASE);
   $: tY = Math.round(y * $scale * BASE);
   $: deep, (visible = false);
-  $: buttonSize = Math.round($scale * BASE * (mobile ? 1 : 1));
+  $: buttonSize = Math.round($scale * BASE);
   $: styleSize = `--size: ${buttonSize}px;`;
   $: styleTransform = `--transform: translate3d(${tX}px, -${tY}px, 0);`;
   $: styleDelay = `--delay: ${delay}ms`;
   $: style = `${styleSize} ${styleTransform} ${styleDelay}`;
 </script>
 
-<button class:front {style} on:click={() => (visible = !visible)} />
+<button class="pulse" class:front {style} on:click={() => (visible = !visible)} />
 
 <div class:visible on:click={() => (visible = false)}>
-  <p>{@html deep}</p>
+  <p>{@html deep} <button class="x"><Icon name="x" /></button></p>
 </div>
 
 <style>
-  button {
+  button.x {
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 1;
+    background: var(--color-gray-dark);
+    font-size: 1.5em;
+    color: var(--color-bg);
+    transform: translate(50%, -50%);
+    padding: 0.25em;
+  }
+
+  :global(button.x svg) {
+    vertical-align: middle;
+  }
+
+  button.pulse {
     position: absolute;
     bottom: calc(var(--size) * -0.5);
     left: calc(var(--size) * -0.5);
@@ -41,11 +55,11 @@
     box-shadow: none;
     background: none;
   }
-  button.front {
+  button.pulse.front {
     z-index: var(--z-top);
   }
 
-  button:before {
+  button.pulse:before {
     content: "";
     position: absolute;
     display: block;
@@ -60,21 +74,8 @@
     opacity: 0;
   }
 
-  @keyframes pulse {
-    0% {
-      opacity: 0.75;
-      transform: scale(0.2);
-    }
-    50%,
-    100% {
-      transform: scale(1);
-      opacity: 0;
-    }
-  }
-
   div {
     position: absolute;
-    background: rgba(255, 255, 255, 0.8);
     padding: 1em;
     z-index: var(--z-top);
     width: 100%;
@@ -93,6 +94,7 @@
   }
 
   p {
+    position: relative;
     font-size: max(16px, 0.75em);
     max-width: 50%;
     margin: 0 auto;
@@ -107,5 +109,27 @@
   div.visible p {
     transform: translate(0, 0);
     opacity: 0.8;
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: 0.75;
+      transform: scale(0.2);
+    }
+    50%,
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+
+  @media only screen and (max-width: 640px) {
+    div {
+      align-items: flex-end;
+    }
+
+    p {
+      max-width: 92.5%;
+    }
   }
 </style>
