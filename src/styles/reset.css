@@ -28,6 +28,10 @@ a {
   color: var(--color-link);
 }
 
+a:focus {
+	outline: 1px solid var(--color-focus);
+}
+
 img,
 video {
 	display: block;
@@ -78,7 +82,7 @@ button:focus,
 input:focus,
 select:focus,
 textarea:focus {
-  box-shadow: 0 0 0 2px var(--color-focus);
+  outline: 1px solid var(--color-focus);
 }
 
 button:disabled,

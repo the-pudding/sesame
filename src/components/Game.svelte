@@ -51,13 +51,13 @@
   $: text = beats[beatIndex].text;
   $: tx = mobile ? beats[beatIndex].tx || 0 : 0;
   $: ts = mobile ? beats[beatIndex].ts || 1.3 : 1;
-  $: tDur = mobile ? beats[beatIndex].tDur || 0.5 : 0;
+  // $: td = mobile ? beats[beatIndex].td || 0.5 : 0;
   $: deep = { ...beats[beatIndex] };
 
   $: outro = id === "outro";
   $: cues = cueData.filter((d) => d.id === id && d.sprite);
   $: sprites = groups(cues, (d) => d.key);
-  $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px; --tX: ${tx}; --tS: ${ts}; --tDur: ${tDur}s;`;
+  $: style = `--scale: ${$scale}; --margin: ${margin}px; --unitsX: ${UNITS_X}; --unitsY: ${UNITS_Y}; --base: ${BASE}px; --tX: ${tx}; --tS: ${ts};`;
   $: tapWidth = format(".1%")(($viewport.width - UNITS_X * $scale * BASE) / 2 / $viewport.width);
   $: disable = beatIndex === 0 ? ["left"] : beatIndex === beats.length - 1 ? ["right"] : [];
   $: if (browser)
@@ -70,11 +70,6 @@
   });
 </script>
 
-<select bind:value={id}>
-  {#each beats as b}
-    <option>{b.id}</option>
-  {/each}
-</select>
 <div id="game" class:visible class:outro style="height: {$viewport.height + 1}px;">
   <div class="stage" {style}>
     {#each sprites as [key, steps] (key)}
@@ -85,7 +80,7 @@
 
     {#if deep.deep}
       {#key deep.deep}
-        <Deep {...deep} />
+        <Deep {...deep} stageScale={ts} />
       {/key}
     {/if}
   </div>
@@ -137,9 +132,8 @@
   #game {
     display: none;
     flex-direction: column;
-    padding-top: 10em;
+    padding-top: 4em;
     overflow: hidden;
-    /* background: pink; */
   }
 
   #game.visible {
@@ -158,7 +152,7 @@
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
     overflow: hidden;
-    transition: transform var(--tDur) ease-in-out;
+    transition: transform 1s ease-in-out;
     transform-origin: 50% 100%;
     transform: translateX(calc(var(--scale) * var(--tX) * var(--base))) scale(var(--tS));
   }
@@ -216,15 +210,11 @@
     margin: 1.5em 0;
   }
 
-  select {
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    z-index: 10000000;
-    display: none;
-  }
-
   @media only screen and (max-width: 1024px) {
+    #game {
+      padding-top: 10em;
+    }
+
     .stage:before,
     .stage:after {
       display: none;

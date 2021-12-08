@@ -21,13 +21,13 @@
 
 <Meta title={copy.title} description={copy.description} url={copy.url} />
 
+<div class="toggle" tab-index="1">
+  <Toggle label="Text Version" bind:value={toggle} />
+</div>
+
 <Plain visible={plain} />
 
 <Game visible={!plain} />
-
-<div class="toggle">
-  <Toggle label="Text Version" bind:value={toggle} />
-</div>
 
 <style>
   .toggle {

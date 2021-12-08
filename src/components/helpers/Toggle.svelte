@@ -62,7 +62,7 @@
   }
 
   .toggle--inner button:focus {
-    box-shadow: 0 0 4px 0 var(--color-focus);
+    outline: 1px var(--color-focus);
   }
 
   .toggle--slider {
@@ -76,7 +76,7 @@
   }
 
   .toggle--slider button:focus {
-    box-shadow: 0 0px 4px var(--color-focus);
+    outline: 1px solid var(--color-focus);
   }
 
   .toggle--slider button::before {
@@ -96,9 +96,5 @@
 
   .toggle--slider button[aria-checked="true"]::before {
     transform: translateX(1.5em);
-  }
-
-  .toggle--slider button:focus {
-    box-shadow: 0 0 4px 0 var(--color-focus);
   }
 </style>

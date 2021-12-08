@@ -9,7 +9,7 @@
   let center = false;
 
   $: mobile = !$mq.lg;
-  $: len = mobile ? 15 : 60;
+  $: len = mobile ? 45 : 60;
   $: if (el) center = el.innerText.length < len;
 </script>
 
@@ -53,43 +53,51 @@
     }
   }
 
-  :global(#game .color-red) {
+  :global(#game mark) {
+    display: inline-block;
+  }
+
+  :global(#game mark.color-red) {
     background-color: var(--color-red);
   }
 
-  :global(#game .color-green) {
+  :global(#game mark.color-green) {
     background-color: var(--color-green);
   }
 
-  :global(#game .color-green-dark) {
+  :global(#game mark.color-green-dark) {
     background-color: var(--color-green-dark);
     color: var(--color-bg);
   }
 
-  :global(#game .color-pink) {
+  :global(#game mark.color-pink) {
     background-color: var(--color-pink);
   }
 
-  :global(#game .color-pink-dark) {
+  :global(#game mark.color-pink-dark) {
     background-color: var(--color-pink-dark);
     color: var(--color-bg);
   }
 
-  :global(#game .color-peanut) {
+  :global(#game mark.color-peanut) {
     background-color: var(--color-peanut);
   }
 
-  :global(#game .color-sesame) {
+  :global(#game mark.color-sesame) {
     background-color: var(--color-sesame);
   }
 
-  :global(#game .color-cashew) {
+  :global(#game mark.color-cashew) {
     background-color: var(--color-cashew);
   }
 
   @media only screen and (min-width: 1024px) {
     div {
       margin-top: 1em;
+    }
+
+    :global(br) {
+      display: none;
     }
   }
 </style>

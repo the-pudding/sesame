@@ -19,15 +19,6 @@
    },
    {
     "filename": "shelf-b 2.aseprite",
-    "frame": { "x": 1024, "y": 0, "w": 1024, "h": 1024 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 1024, "h": 1024 },
-    "sourceSize": { "w": 1024, "h": 1024 },
-    "duration": 100
-   },
-   {
-    "filename": "shelf-b 3.aseprite",
     "frame": { "x": 0, "y": 1024, "w": 1024, "h": 1024 },
     "rotated": false,
     "trimmed": false,
@@ -36,7 +27,7 @@
     "duration": 100
    },
    {
-    "filename": "shelf-b 4.aseprite",
+    "filename": "shelf-b 3.aseprite",
     "frame": { "x": 1024, "y": 1024, "w": 1024, "h": 1024 },
     "rotated": false,
     "trimmed": false,
@@ -54,9 +45,8 @@
   "scale": "1",
   "frameTags": [
    { "name": "one", "from": 1, "to": 1, "direction": "forward", "color": "#000000ff" },
-   { "name": "oneb", "from": 2, "to": 2, "direction": "forward", "color": "#000000ff" },
-   { "name": "two", "from": 3, "to": 3, "direction": "forward", "color": "#000000ff" },
-   { "name": "twob", "from": 4, "to": 4, "direction": "forward", "color": "#000000ff" }
+   { "name": "two", "from": 2, "to": 2, "direction": "forward", "color": "#000000ff" },
+   { "name": "twob", "from": 3, "to": 3, "direction": "forward", "color": "#000000ff" }
   ]
  }
 }

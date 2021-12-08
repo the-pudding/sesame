@@ -5,18 +5,18 @@
   export let x;
   export let y;
   export let deep;
-  export let size = 1;
   export let delay = 0;
   export let front = false;
+  export let stageScale = 1;
 
   let visible = false;
   const { scale, BASE } = getContext("Game");
 
   $: mobile = !$mq.lg;
-  $: tX = x * $scale * BASE;
-  $: tY = y * $scale * BASE;
+  $: tX = Math.round(x * $scale * BASE);
+  $: tY = Math.round(y * $scale * BASE);
   $: deep, (visible = false);
-  $: buttonSize = $scale * BASE * (mobile ? parseFloat(size) * 2 : parseFloat(size));
+  $: buttonSize = Math.round($scale * BASE * (mobile ? 1 : 1));
   $: styleSize = `--size: ${buttonSize}px;`;
   $: styleTransform = `--transform: translate3d(${tX}px, -${tY}px, 0);`;
   $: styleDelay = `--delay: ${delay}ms`;
@@ -32,17 +32,17 @@
 <style>
   button {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: calc(var(--size) * -0.5);
+    left: calc(var(--size) * -0.5);
     width: var(--size);
     height: var(--size);
     transform: var(--transform);
     outline: none;
     box-shadow: none;
+    background: none;
   }
   button.front {
-    z-index: 100;
-    background: rgba(255, 255, 255, 0);
+    z-index: var(--z-top);
   }
 
   button:before {
@@ -51,9 +51,8 @@
     display: block;
     width: 100%;
     height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
     transform-origin: 50% 50%;
     border-radius: 50%;
     background: var(--color-red);
@@ -64,11 +63,11 @@
   @keyframes pulse {
     0% {
       opacity: 0.75;
-      transform: translate(-50%, -50%) scale(0.2);
+      transform: scale(0.2);
     }
     50%,
     100% {
-      transform: translate(-50%, -50%) scale(1);
+      transform: scale(1);
       opacity: 0;
     }
   }
