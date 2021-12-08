@@ -1,5 +1,5 @@
 <script>
-  export let title = "Title TK";
+  export let title = "The Hidden Layers of Sesame Allergies";
   export let description = "Description TK";
   export let url = "https://pudding.cool";
 </script>

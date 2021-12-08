@@ -1,5 +1,7 @@
 <script>
   import { getContext } from "svelte";
+  import mq from "$stores/mq.js";
+
   export let x;
   export let y;
   export let deep;
@@ -10,10 +12,12 @@
   let visible = false;
   const { scale, BASE } = getContext("Game");
 
+  $: mobile = !$mq.lg;
   $: tX = x * $scale * BASE;
   $: tY = y * $scale * BASE;
   $: deep, (visible = false);
-  $: styleSize = `--size: ${$scale * BASE * size}px;`;
+  $: buttonSize = $scale * BASE * (mobile ? parseFloat(size) * 2 : parseFloat(size));
+  $: styleSize = `--size: ${buttonSize}px;`;
   $: styleTransform = `--transform: translate3d(${tX}px, -${tY}px, 0);`;
   $: styleDelay = `--delay: ${delay}ms`;
   $: style = `${styleSize} ${styleTransform} ${styleDelay}`;
