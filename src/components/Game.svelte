@@ -92,7 +92,7 @@
   <div class="beats">
     {#if outro}
       {#each copy.outro as { type, value }}
-        <div class="beat">
+        <div class="beat" in:fade={{ delay: 500, duration: 250 }} out:fade={{ duration: 50 }}>
           {#if type === "list"}
             <ul>
               {#each value as v}
@@ -104,7 +104,7 @@
           {/if}
         </div>
       {/each}
-      <div class="beat">
+      <div class="beat" in:fade={{ delay: 500, duration: 250 }} out:fade={{ duration: 50 }}>
         <details>
           <summary>Data and Methods</summary>
           {#each copy.method as { value }}
