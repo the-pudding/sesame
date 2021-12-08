@@ -100,4 +100,10 @@
       display: none;
     }
   }
+
+  @media only screen and (max-height: 800px) {
+    p {
+      max-width: 40em;
+    }
+  }
 </style>

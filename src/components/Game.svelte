@@ -26,6 +26,7 @@
   const BASE = 32;
   const SIZE = BASE * UNITS_X;
   const MAX_SCALE = 4;
+  const HEIGHT_BP = 960;
 
   let deepMode = false;
   let beatIndex = 0;
@@ -42,9 +43,22 @@
 
   const getSpriteData = (key) => spriteData.find((d) => d.id === key.split("_")[0]);
 
+  const calcScale = (w, h) => {
+    // const shrink = mobile ? 1 : shrinkStage($viewport.height);
+    if (mobile) return w / SIZE;
+
+    const widthScale = Math.min(MAX_SCALE, w / SIZE);
+
+    const min = 540;
+    const upper = Math.min(Math.max(min, h), HEIGHT_BP);
+    const factor = 0.5 + ((upper - min) / (HEIGHT_BP - min)) * 0.5;
+    const shrink = factor * widthScale;
+
+    return shrink;
+  };
+
   $: mobile = !$mq.lg;
-  $: stageScale = mobile ? 1 : !mobile && $viewport.height < 800 ? 0.75 : 0.9;
-  $: scale.set(Math.min(MAX_SCALE, ($viewport.width * stageScale) / SIZE));
+  $: scale.set(calcScale($viewport.width, $viewport.height));
   $: margin = Math.ceil(($viewport.width - $scale * BASE * UNITS_X) / 2);
   $: setContext("Game", { scale, BASE });
 
@@ -71,6 +85,7 @@
   });
 </script>
 
+<p style="z-index: 9393939393; position: fixed; top: 0; left: 200px;">{$scale}</p>
 <div id="game" class:visible class:outro style="{style} height: {$viewport.height + 1}px;">
   <div class="stage" class:deepMode>
     {#each sprites as [key, steps] (key)}
