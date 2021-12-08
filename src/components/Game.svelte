@@ -44,7 +44,6 @@
   const getSpriteData = (key) => spriteData.find((d) => d.id === key.split("_")[0]);
 
   const calcScale = (w, h) => {
-    // const shrink = mobile ? 1 : shrinkStage($viewport.height);
     if (mobile) return w / SIZE;
 
     const widthScale = Math.min(MAX_SCALE, w / SIZE);
@@ -85,7 +84,6 @@
   });
 </script>
 
-<p style="z-index: 9393939393; position: fixed; top: 0; left: 200px;">{$scale}</p>
 <div id="game" class:visible class:outro style="{style} height: {$viewport.height + 1}px;">
   <div class="stage" class:deepMode>
     {#each sprites as [key, steps] (key)}
