@@ -87,7 +87,7 @@
 <div id="game" class:visible class:outro style="{style} height: {$viewport.height + 1}px;">
   <div class="stage" class:deepMode>
     {#each sprites as [key, steps] (key)}
-      <div in:fade={{ duration: 1 }} out:fade={{ duration: 1 }}>
+      <div in:fade={{ duration: 0 }} out:fade={{ duration: 150 }}>
         <Sprite {id} {steps} name={key.split("_")[0]} data={getSpriteData(key)} />
       </div>
     {/each}
@@ -104,7 +104,7 @@
   <div class="beats">
     {#if outro}
       {#each copy.outro as { type, value }}
-        <div class="beat" in:fade={{ delay: 500, duration: 250 }} out:fade={{ duration: 50 }}>
+        <div class="beat" in:fade={{ delay: 300, duration: 150 }} out:fade={{ duration: 50 }}>
           {#if type === "list"}
             <ul>
               {#each value as v}
@@ -116,7 +116,7 @@
           {/if}
         </div>
       {/each}
-      <div class="beat" in:fade={{ delay: 500, duration: 250 }} out:fade={{ duration: 50 }}>
+      <div class="beat" in:fade={{ delay: 300, duration: 150 }} out:fade={{ duration: 50 }}>
         <details>
           <summary>Data and Methods</summary>
           {#each copy.method as { value }}
