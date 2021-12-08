@@ -207,7 +207,7 @@
 
   .stage,
   .deep-container {
-    margin-top: 4em;
+    margin-top: 5em;
   }
 
   .beats {
