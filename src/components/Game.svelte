@@ -65,7 +65,7 @@
   $: text = beats[beatIndex].text;
   $: tx = mobile ? beats[beatIndex].tx || 0 : 0;
   $: ts = mobile ? beats[beatIndex].ts || 1.3 : 1;
-  // $: td = mobile ? beats[beatIndex].td || 0.5 : 0;
+  $: beatIndex, (deepMode = false);
   $: deep = { ...beats[beatIndex] };
 
   $: outro = id === "outro";
@@ -179,6 +179,7 @@
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
     overflow: hidden;
+    opacity: 1;
     transition: transform 1s ease-in-out, opacity 250ms ease-in-out;
     transform-origin: 50% 100%;
     transform: translateX(calc(var(--scale) * var(--tX) * var(--base))) scale(var(--tS));

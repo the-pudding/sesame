@@ -129,7 +129,7 @@
     }
 
     p {
-      max-width: 92.5%;
+      max-width: 95%;
     }
   }
 </style>

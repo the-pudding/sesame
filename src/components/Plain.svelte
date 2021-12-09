@@ -87,4 +87,8 @@
   .beat {
     margin-bottom: 2em;
   }
+
+  :global(article ul.beat) {
+    padding-left: 2em;
+  }
 </style>
