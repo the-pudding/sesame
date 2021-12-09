@@ -2,6 +2,7 @@ const fs = require("fs");
 
 const CWD = process.cwd();
 const SCALE = 8;
+const PAD = 1;
 
 const src = `${CWD}/tasks/data`;
 const files = fs.readdirSync(src).filter(d => d.includes("json"));
@@ -19,8 +20,9 @@ const getTagName = ({ tags, index }) => {
 		console.log(id);
 		const json = JSON.parse(fs.readFileSync(`${src}/${file}`, "utf8"));
 
-		const rawSize = json.frames[0].sourceSize.w;
+		const rawSize = json.frames[0].frame.w;
 		const size = Math.floor(rawSize / SCALE);
+		console.log({ size });
 		const cols = json.meta.size.w / rawSize;
 		const rows = json.meta.size.h / rawSize;
 		const tags = json.meta.frameTags;

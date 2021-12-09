@@ -1,7 +1,7 @@
 { "frames": [
    {
     "filename": "watercooler 0.aseprite",
-    "frame": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 0, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -10,7 +10,7 @@
    },
    {
     "filename": "watercooler 1.aseprite",
-    "frame": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 0, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -19,7 +19,7 @@
    },
    {
     "filename": "watercooler 2.aseprite",
-    "frame": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 0, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -28,7 +28,7 @@
    },
    {
     "filename": "watercooler 3.aseprite",
-    "frame": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 0, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -37,7 +37,7 @@
    },
    {
     "filename": "watercooler 4.aseprite",
-    "frame": { "x": 512, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 514, "y": 0, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -46,7 +46,7 @@
    },
    {
     "filename": "watercooler 5.aseprite",
-    "frame": { "x": 512, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 514, "y": 0, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -55,7 +55,7 @@
    },
    {
     "filename": "watercooler 6.aseprite",
-    "frame": { "x": 1024, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 1028, "y": 0, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -64,7 +64,7 @@
    },
    {
     "filename": "watercooler 7.aseprite",
-    "frame": { "x": 1024, "y": 0, "w": 512, "h": 512 },
+    "frame": { "x": 1028, "y": 0, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -73,7 +73,7 @@
    },
    {
     "filename": "watercooler 8.aseprite",
-    "frame": { "x": 0, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 514, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -82,7 +82,7 @@
    },
    {
     "filename": "watercooler 9.aseprite",
-    "frame": { "x": 0, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 514, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -91,7 +91,7 @@
    },
    {
     "filename": "watercooler 10.aseprite",
-    "frame": { "x": 512, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 514, "y": 514, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -100,7 +100,7 @@
    },
    {
     "filename": "watercooler 11.aseprite",
-    "frame": { "x": 512, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 514, "y": 514, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -109,7 +109,7 @@
    },
    {
     "filename": "watercooler 12.aseprite",
-    "frame": { "x": 1024, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 1028, "y": 514, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -118,7 +118,7 @@
    },
    {
     "filename": "watercooler 13.aseprite",
-    "frame": { "x": 1024, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 1028, "y": 514, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -127,7 +127,7 @@
    },
    {
     "filename": "watercooler 14.aseprite",
-    "frame": { "x": 0, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 1028, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -136,7 +136,7 @@
    },
    {
     "filename": "watercooler 15.aseprite",
-    "frame": { "x": 0, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 1028, "w": 514, "h": 514 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -149,7 +149,7 @@
   "version": "1.3-beta7",
   "image": "watercooler.png",
   "format": "RGBA8888",
-  "size": { "w": 1536, "h": 1536 },
+  "size": { "w": 1542, "h": 1542 },
   "scale": "1",
   "frameTags": [
    { "name": "bubble", "from": 0, "to": 15, "direction": "forward", "color": "#000000ff" }
