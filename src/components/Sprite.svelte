@@ -103,8 +103,8 @@
   $: cancelFn = start(id);
   $: frame = data.frames.find((d) => d.index === frameIndex);
 
-  $: x = `${Math.round($tween.x * $scale * BASE)}px`;
-  $: y = `${Math.round($tween.y * $scale * BASE * -1)}px`;
+  $: x = `${$tween.x * $scale * BASE}px`;
+  $: y = `${$tween.y * $scale * BASE * -1}px`;
   $: s = flip ? -1 : 1;
 
   $: bgImage = `${base}/assets/sprites2x/${name}@2x.png`;
