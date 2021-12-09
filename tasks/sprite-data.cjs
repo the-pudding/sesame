@@ -28,8 +28,8 @@ const getTagName = ({ tags, index }) => {
 
 		const frames = json.frames.map(({ frame }, index) => ({
 			index,
-			x: Math.floor(frame.x / SCALE),
-			y: Math.floor(frame.y / SCALE),
+			x: Math.floor(frame.x / frame.w * size),
+			y: Math.floor(frame.y / frame.h * size),
 			name: getTagName({ tags, index })
 		}));
 
