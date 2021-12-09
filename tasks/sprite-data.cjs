@@ -22,7 +22,6 @@ const getTagName = ({ tags, index }) => {
 
 		const rawSize = json.frames[0].frame.w;
 		const size = Math.floor(rawSize / SCALE);
-		console.log({ size });
 		const cols = json.meta.size.w / rawSize;
 		const rows = json.meta.size.h / rawSize;
 		const tags = json.meta.frameTags;
