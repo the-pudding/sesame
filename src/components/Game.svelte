@@ -249,7 +249,7 @@
   @media only screen and (max-width: 1024px) {
     .stage,
     .deep-container {
-      margin-top: 8em;
+      margin-top: 10em;
     }
 
     .stage:before,

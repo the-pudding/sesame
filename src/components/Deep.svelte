@@ -5,7 +5,7 @@
   export let x;
   export let y;
   export let deep;
-  export let delay = 0;
+  export let delay = 250;
   export let front = false;
   export let visible = false;
 
