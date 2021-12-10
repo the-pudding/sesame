@@ -1,5 +1,5 @@
 <script>
-  import { getContext } from "svelte";
+  import { getContext, createEventDispatcher } from "svelte";
   import Icon from "$components/helpers/Icon.svelte";
 
   export let x;
@@ -8,8 +8,15 @@
   export let delay = 250;
   export let front = false;
   export let visible = false;
+  export let ts = 1;
 
   const { scale, BASE } = getContext("Game");
+
+  const dispatch = createEventDispatcher();
+
+  const onClick = () => {
+    dispatch("dive", deep);
+  };
 
   $: tX = Math.round(x * $scale * BASE);
   $: tY = Math.round(y * $scale * BASE);
@@ -19,31 +26,12 @@
   $: styleTransform = `--transform: translate3d(${tX}px, -${tY}px, 0);`;
   $: styleDelay = `--delay: ${delay}ms`;
   $: style = `${styleSize} ${styleTransform} ${styleDelay}`;
+  $: textScale = `--scale: ${1 / ts}`;
 </script>
 
-<button class="pulse" class:front {style} on:click={() => (visible = !visible)} />
-
-<div class:visible on:click={() => (visible = false)}>
-  <p>{@html deep} <button class="x"><Icon name="x" /></button></p>
-</div>
+<button class="pulse" class:front {style} on:click={onClick} />
 
 <style>
-  button.x {
-    position: absolute;
-    top: 0;
-    right: 0;
-    line-height: 1;
-    background: var(--color-gray-dark);
-    font-size: 1.5em;
-    color: var(--color-bg);
-    transform: translate(50%, -50%);
-    padding: 0.25em;
-  }
-
-  :global(button.x svg) {
-    vertical-align: middle;
-  }
-
   button.pulse {
     position: absolute;
     bottom: calc(var(--size) * -0.5);
@@ -75,44 +63,6 @@
     opacity: 0;
   }
 
-  div {
-    --dur: 250ms;
-    position: absolute;
-    padding: 1em;
-    z-index: var(--z-top);
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    transition: all var(--dur) ease-in-out;
-  }
-
-  div.visible {
-    opacity: 1;
-    pointer-events: auto;
-    cursor: pointer;
-  }
-
-  p {
-    position: relative;
-    font-size: max(16px, 0.75em);
-    max-width: 50%;
-    margin: 0 auto;
-    background: var(--color-gray-light);
-    padding: 1em;
-    transform: translate(0, -50%);
-    opacity: 0;
-    transition: all var(--dur) var(--dur) ease-in-out;
-    box-shadow: 0 0 0 4px var(--color-gray-dark);
-  }
-
-  div.visible p {
-    transform: translate(0, 0);
-    opacity: 0.8;
-  }
-
   @keyframes pulse {
     0% {
       opacity: 0.75;
@@ -122,22 +72,6 @@
     100% {
       transform: scale(1);
       opacity: 0;
-    }
-  }
-
-  @media only screen and (max-width: 640px) {
-    div {
-      align-items: flex-end;
-    }
-
-    p {
-      max-width: 95%;
-    }
-  }
-
-  @media only screen and (max-width: 1024px) {
-    div {
-      --dur: 0s;
     }
   }
 </style>

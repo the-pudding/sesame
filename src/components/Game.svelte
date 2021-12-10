@@ -7,6 +7,7 @@
   import viewport from "$stores/viewport.js";
   import Sprite from "$components/Sprite.svelte";
   import Deep from "$components/Deep.svelte";
+  import Dive from "$components/Dive.svelte";
   import Beat from "$components/Beat.svelte";
   import Tap from "$components/helpers/Tap.svelte";
   import Footer from "$components/Footer.svelte";
@@ -28,7 +29,8 @@
   const MAX_SCALE = 4;
   const HEIGHT_BP = 960;
 
-  let deepMode = false;
+  let diveMode = false;
+  let diveText = undefined;
   let beatIndex = 0;
   let scale = writable();
 
@@ -56,6 +58,14 @@
     return shrink;
   };
 
+  const onDive = ({ detail }) => {
+    diveText = detail;
+    diveMode = true;
+  };
+  const onClose = () => {
+    diveMode = false;
+  };
+
   $: mobile = !$mq.lg;
   $: scale.set(calcScale($viewport.width, $viewport.height));
   $: margin = Math.ceil(($viewport.width - $scale * BASE * UNITS_X) / 2);
@@ -65,7 +75,7 @@
   $: text = beats[beatIndex].text;
   $: tx = mobile ? beats[beatIndex].tx || 0 : 0;
   $: ts = mobile ? beats[beatIndex].ts || 1.3 : 1;
-  $: beatIndex, (deepMode = false);
+  $: beatIndex, (diveText = undefined);
   $: deep = { ...beats[beatIndex] };
 
   $: outro = id === "outro";
@@ -85,22 +95,24 @@
 </script>
 
 <div id="game" class:visible class:outro style="{style} height: {$viewport.height + 1}px;">
-  <div class="stage" class:deepMode>
+  <div class="stage" class:diveMode>
     {#each sprites as [key, steps] (key)}
       <div in:fade={{ duration: 0 }} out:fade={{ duration: 150 }}>
         <Sprite {id} {steps} name={key.split("_")[0]} data={getSpriteData(key)} />
       </div>
     {/each}
-  </div>
 
-  <div class="deep-container" class:deepMode>
-    <div class="zoom">
+    <div class="deep">
       {#if deep.deep}
         {#key deep.deep}
-          <Deep {...deep} bind:visible={deepMode} />
+          <Deep {...deep} on:dive={onDive} />
         {/key}
       {/if}
     </div>
+  </div>
+
+  <div class="dive">
+    <Dive text={diveText} visible={diveMode} on:close={onClose} />
   </div>
 
   <div class="beats">
@@ -161,36 +173,14 @@
     height: auto !important;
   }
 
-  .deep-container {
-    position: absolute;
-    min-width: calc(var(--unitsX) * var(--scale) * var(--base));
-    min-height: calc(var(--unitsY) * var(--scale) * var(--base));
-    width: calc(var(--unitsX) * var(--scale) * var(--base));
-    height: calc(var(--unitsY) * var(--scale) * var(--base));
-    margin: 0 auto;
-    top: 0;
-    left: 50%;
-    transform-origin: 50% 100%;
-    transform: translateX(-50%);
-    /* overflow: hidden; */
-  }
-
-  .deep-container.deepMode {
-    overflow: visible;
-  }
-
-  .zoom {
+  .dive {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    transform-origin: 50% 100%;
-    transform: translateX(calc(var(--scale) * var(--tX) * var(--base))) scale(var(--tS));
-  }
-
-  .deep-container.deepMode .zoom {
-    transform: scale(1);
+    z-index: var(--z-top);
+    pointer-events: none;
   }
 
   .stage {
@@ -200,15 +190,12 @@
     width: calc(var(--unitsX) * var(--scale) * var(--base));
     height: calc(var(--unitsY) * var(--scale) * var(--base));
     margin: 0 auto;
+    margin-top: 5rem;
     overflow: hidden;
     opacity: 1;
     transition: transform 1s ease-in-out, opacity 250ms ease-in-out;
     transform-origin: 50% 100%;
     transform: translateX(calc(var(--scale) * var(--tX) * var(--base))) scale(var(--tS));
-  }
-
-  .stage.deepMode {
-    opacity: 0.2;
   }
 
   .stage:before {
@@ -241,11 +228,6 @@
     pointer-events: none;
   }
 
-  .stage,
-  .deep-container {
-    margin-top: 5em;
-  }
-
   .beats {
     position: relative;
     flex: 1;
@@ -270,9 +252,8 @@
   }
 
   @media only screen and (max-width: 1024px) {
-    .stage,
-    .deep-container {
-      margin-top: 10em;
+    .stage {
+      margin-top: 10rem;
     }
 
     .stage:before,
