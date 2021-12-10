@@ -93,12 +93,14 @@
     {/each}
   </div>
 
-  <div class="deep-container">
-    {#if deep.deep}
-      {#key deep.deep}
-        <Deep {...deep} bind:visible={deepMode} />
-      {/key}
-    {/if}
+  <div class="deep-container" class:deepMode>
+    <div class="zoom">
+      {#if deep.deep}
+        {#key deep.deep}
+          <Deep {...deep} bind:visible={deepMode} />
+        {/key}
+      {/if}
+    </div>
   </div>
 
   <div class="beats">
@@ -168,7 +170,27 @@
     margin: 0 auto;
     top: 0;
     left: 50%;
+    transform-origin: 50% 100%;
     transform: translateX(-50%);
+    overflow: hidden;
+  }
+
+  .deep-container.deepMode {
+    overflow: visible;
+  }
+
+  .zoom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 100%;
+    transform: scale(var(--tS));
+  }
+
+  .deep-container.deepMode .zoom {
+    transform: scale(1);
   }
 
   .stage {

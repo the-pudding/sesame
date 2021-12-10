@@ -69,12 +69,14 @@
     left: 0;
     transform-origin: 50% 50%;
     border-radius: 50%;
+    transform: scale(0.2);
     background: var(--color-red);
     animation: pulse 1.25s var(--delay) cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
     opacity: 0;
   }
 
   div {
+    --dur: 250ms;
     position: absolute;
     padding: 1em;
     z-index: var(--z-top);
@@ -84,7 +86,7 @@
     pointer-events: none;
     display: flex;
     align-items: center;
-    transition: all 250ms ease-in-out;
+    transition: all var(--dur) ease-in-out;
   }
 
   div.visible {
@@ -102,7 +104,7 @@
     padding: 1em;
     transform: translate(0, -50%);
     opacity: 0;
-    transition: all 250ms 250ms ease-in-out;
+    transition: all var(--dur) var(--dur) ease-in-out;
     box-shadow: 0 0 0 4px var(--color-gray-dark);
   }
 
@@ -130,6 +132,12 @@
 
     p {
       max-width: 95%;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    div {
+      --dur: 0s;
     }
   }
 </style>
