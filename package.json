@@ -36,6 +36,6 @@
 	},
 	"browserslist": "> 0.5%, last 4 versions, not ie <= 11, not ie_mob <= 11",
 	"pudding": {
-		"subdirectory": "sesame"
+		"subdirectory": "2021/12/sesame"
 	}
 }
