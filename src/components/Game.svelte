@@ -172,7 +172,7 @@
     left: 50%;
     transform-origin: 50% 100%;
     transform: translateX(-50%);
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   .deep-container.deepMode {
@@ -186,7 +186,7 @@
     width: 100%;
     height: 100%;
     transform-origin: 50% 100%;
-    transform: scale(var(--tS));
+    transform: translateX(calc(var(--scale) * var(--tX) * var(--base))) scale(var(--tS));
   }
 
   .deep-container.deepMode .zoom {
