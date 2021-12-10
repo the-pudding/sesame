@@ -48,11 +48,14 @@
   const calcScale = (w, h) => {
     if (mobile) return w / SIZE;
 
-    const widthScale = Math.min(MAX_SCALE, w / SIZE);
+    let widthScale = Math.min(MAX_SCALE, w / SIZE);
+
+    if (widthScale < 4) widthScale -= 0.5;
+    else widthScale -= 0.2;
 
     const min = 540;
     const upper = Math.min(Math.max(min, h), HEIGHT_BP);
-    const factor = 0.5 + ((upper - min) / (HEIGHT_BP - min)) * 0.5;
+    const factor = 0.5 + ((upper - min) / (HEIGHT_BP - min)) * 0.45;
     const shrink = factor * widthScale;
 
     return shrink;
