@@ -264,6 +264,10 @@
     margin: 1.5em 0;
   }
 
+  :global(#game .beat li) {
+    font-size: 0.9em;
+  }
+
   @media only screen and (max-width: 1024px) {
     .stage {
       margin-top: 10rem;
