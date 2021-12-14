@@ -52,10 +52,20 @@
 
   <div class="beat">
     <details>
-      <summary>Data and Methods</summary>
+      <summary>Our Data and Methods</summary>
       {#each copy.method as { value }}
         <p>{@html value}</p>
       {/each}
+    </details>
+  </div>
+  <div class="beat">
+    <details>
+      <summary>Citations</summary>
+      <ul>
+        {#each copy.citations as value}
+          <li>{@html value}</li>
+        {/each}
+      </ul>
     </details>
   </div>
 </article>
@@ -88,7 +98,11 @@
     margin-bottom: 2em;
   }
 
-  :global(article ul.beat) {
+  :global(article ul.beat, article .beat ul) {
     padding-left: 2em;
+  }
+
+  :global(article .beat li) {
+    font-size: 0.9em;
   }
 </style>

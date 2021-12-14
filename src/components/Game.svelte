@@ -135,10 +135,20 @@
       {/each}
       <div class="beat" in:fade={{ delay: 300, duration: 150 }} out:fade={{ duration: 50 }}>
         <details>
-          <summary>Data and Methods</summary>
+          <summary>Our Data and Methods</summary>
           {#each copy.method as { value }}
             <p>{@html value}</p>
           {/each}
+        </details>
+      </div>
+      <div class="beat" in:fade={{ delay: 300, duration: 150 }} out:fade={{ duration: 50 }}>
+        <details>
+          <summary>Citations</summary>
+          <ul>
+            {#each copy.citations as value}
+              <li>{@html value}</li>
+            {/each}
+          </ul>
         </details>
       </div>
       <Footer />
