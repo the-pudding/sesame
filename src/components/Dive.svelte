@@ -14,7 +14,7 @@
 <div class:visible>
   <p>
     {@html text}
-    <button class="x" on:click={onClick}>
+    <button class="x" on:click={onClick} aria-label="close">
       <Icon name="x" />
     </button>
   </p>
