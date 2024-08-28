@@ -10,8 +10,8 @@
   <div class="beat">
     <h1>{copy.title}</h1>
     <p>
-      By <a href="https://pudding.cool/author/russell-goldenberg">Russell Goldenberg</a> and
-      <a href="https://pudding.cool/author/michelle-mcghee">Michelle McGhee</a>
+      By <a href="https://pudding.cool/author/russell-samora">Russell Samora</a> and
+      <a href="https://pudding.cool/author/michelle-pera-mcghee">Michelle Pera-McGhee</a>
     </p>
   </div>
   {#each copy.scenes as { scene, setting, beats }}
